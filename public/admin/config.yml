@@ -4,6 +4,7 @@ backend:
   branch: main
   auth_type: implicit
 
+publish_mode: simple
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
