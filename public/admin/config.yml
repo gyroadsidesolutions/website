@@ -1,0 +1,19 @@
+backend:
+  name: github
+  repo: gyroadsidesolutions/website
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "galeria"
+    label: "Fotos de Trabajos"
+    folder: "src/content/gallery"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Título del Trabajo", name: "title", widget: "string" }
+      - { label: "Fecha", name: "date", widget: "datetime" }
+      - { label: "Foto", name: "image", widget: "image" }
+      - { label: "Descripción / Servicio", name: "body", widget: "markdown" }
