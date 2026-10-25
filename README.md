@@ -332,7 +332,7 @@ Then open http://localhost:4321 and check:
 □ Sustituir YOUR_WEB3FORMS_ACCESS_KEY en src/config/contact.ts
 □ Realizar prueba real de envío
 □ Confirmar recepción del correo
-□ Configurar Telegram (opcional)
+□ Configurar Telegram (opcional) 
 □ Configurar autorespuesta (opcional)
 □ Configurar página de agradecimiento (opcional)
 ------------------------------------------
