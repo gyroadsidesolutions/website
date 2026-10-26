@@ -6,6 +6,7 @@ export default defineConfig({
   title: 'GY Roadside Solutions — Panel',
   projectId: '02066cqd',
   dataset: 'production',
+  basePath: '/admin',
   plugins: [structureTool()],
   schema: {
     types: [
