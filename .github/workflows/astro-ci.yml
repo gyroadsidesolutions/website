@@ -3,6 +3,8 @@ name: Deploy Astro site to Pages
 on:
   push:
     branches: [ main ]
+  repository_dispatch:
+    types: [ sanity_publish ]
   workflow_dispatch:
 
 permissions:
