@@ -1,19 +1,18 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
+import { defineConfig } from 'astro/config';
+import sanity from '@sanity/astro';
+import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
-// Sitemap is generated as a static file (public/sitemap-index.xml)
-// to avoid version compatibility issues with @astrojs/sitemap.
-// See public/sitemap-0.xml for the full sitemap.
-
+// https://astro.build/config
 export default defineConfig({
-  site: "https://gyroadsidesolutions.com",
+  site: 'https://gyroadsidesolutions.com',
   integrations: [
-    tailwind({
-      applyBaseStyles: false,
+    tailwind(),
+    sitemap(),
+    sanity({
+      projectId: '02066cqd',
+      dataset: 'production',
+      studioBasePath: '/admin',
     }),
   ],
-  output: "static",
-  build: {
-    format: "directory",
-  },
 });
