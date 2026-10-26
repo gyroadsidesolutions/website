@@ -1,5 +1,6 @@
 ---
 import type { Lang } from "@/i18n/index";
+import { sanityClient } from "sanity:client";
 
 export interface Props {
   lang: Lang;
@@ -8,14 +9,32 @@ export interface Props {
 const { lang } = Astro.props;
 const es = lang === "es";
 
-// Gallery photos (copied to public/images/about/). Alt text kept honest/generic.
-const slides = [
+// Fotos de respaldo fijas (se mantienen activas si no hay fotos en Sanity)
+const fallbackSlides = [
   { src: "/images/about/about-1.webp", alt: es ? "Foto 1 de GY Roadside Solutions" : "GY Roadside Solutions photo 1" },
   { src: "/images/about/about-2.webp", alt: es ? "Foto 2 de GY Roadside Solutions" : "GY Roadside Solutions photo 2" },
   { src: "/images/about/about-3.webp", alt: es ? "Foto 3 de GY Roadside Solutions" : "GY Roadside Solutions photo 3" },
   { src: "/images/about/about-4.webp", alt: es ? "Foto 4 de GY Roadside Solutions" : "GY Roadside Solutions photo 4" },
   { src: "/images/about/about-5.webp", alt: es ? "Foto 5 de GY Roadside Solutions" : "GY Roadside Solutions photo 5" },
 ];
+
+let slides = fallbackSlides;
+
+try {
+  const sanityPhotos = await sanityClient.fetch(`*[_type == "gallery" && defined(image.asset)] | order(date desc){
+    title,
+    "src": image.asset->url
+  }`);
+
+  if (sanityPhotos && sanityPhotos.length > 0) {
+    slides = sanityPhotos.map((item: { title?: string; src: string }, i: number) => ({
+      src: item.src,
+      alt: item.title || (es ? `Foto ${i + 1} de GY Roadside Solutions` : `GY Roadside Solutions photo ${i + 1}`),
+    }));
+  }
+} catch (error) {
+  console.warn("Usando fotos estáticas de respaldo:", error);
+}
 
 const labels = {
   region: es ? "Galería de fotos de GY Roadside Solutions" : "GY Roadside Solutions photo gallery",
