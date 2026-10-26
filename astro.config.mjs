@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sanity from '@sanity/astro';
+import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
@@ -7,6 +8,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://gyroadsidesolutions.com',
   integrations: [
+    react(),
     tailwind(),
     sitemap(),
     sanity({
