@@ -1,15 +1,30 @@
 ---
-import Studio from '@sanity/astro/studio';
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GY Roadside — Panel de Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>GY Roadside Solutions — Panel de Control</title>
+    <style>
+      html,
+      body,
+      #sanity {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
-  <body style="margin: 0; padding: 0;">
-    <Studio />
+  <body>
+    <div id="sanity"></div>
+    <script>
+      import { renderStudio } from 'sanity';
+      import config from '../../../sanity.config';
+
+      renderStudio(document.getElementById('sanity'), config);
+    </script>
   </body>
 </html>
