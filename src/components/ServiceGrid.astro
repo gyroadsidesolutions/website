@@ -17,6 +17,43 @@ const tr = t(lang);
 let services = featuredOnly ? featuredServices : activeServices;
 if (limit) services = services.slice(0, limit);
 
+// 1. Consultar fotos oficiales desde Sanity
+let sanityImages: Record<string, string> | null = null;
+try {
+  const query = encodeURIComponent(`*[_type == "serviceImages"] | order(_updatedAt desc)[0]{
+    "tireChange": tireChange.asset->url,
+    "reeferMaintenance": reeferMaintenance.asset->url,
+    "fuelDelivery": fuelDelivery.asset->url,
+    "jumpStart": jumpStart.asset->url,
+    "oilChange": oilChange.asset->url,
+    "brakeService": brakeService.asset->url
+  }`);
+  const res = await fetch(`https://02066cqd.api.sanity.io/v2021-03-25/data/query/production?query=${query}`);
+  if (res.ok) {
+    const data = await res.json();
+    sanityImages = data.result;
+  }
+} catch (e) {
+  console.error("Error al obtener imágenes de Sanity:", e);
+}
+
+// 2. Asociar cada servicio con su foto de Sanity o mantener el respaldo local
+function getServiceImage(service: any): string {
+  const key = `${service.slug || ''} ${service.slugEs || ''} ${service.image || ''}`.toLowerCase();
+  if (key.includes('tire') || key.includes('neumatic')) return sanityImages?.tireChange || service.image;
+  if (key.includes('reefer') || key.includes('refriger')) return sanityImages?.reeferMaintenance || service.image;
+  if (key.includes('fuel') || key.includes('combustible')) return sanityImages?.fuelDelivery || service.image;
+  if (key.includes('jump') || key.includes('bater') || key.includes('corriente')) return sanityImages?.jumpStart || service.image;
+  if (key.includes('oil') || key.includes('aceite')) return sanityImages?.oilChange || service.image;
+  if (key.includes('brake') || key.includes('freno')) return sanityImages?.brakeService || service.image;
+  return service.image;
+}
+
+services = services.map((s) => ({
+  ...s,
+  image: getServiceImage(s),
+}));
+
 const servicesPath = lang === "es" ? `/es/servicios/` : `/en/services/`;
 ---
 
@@ -109,7 +146,7 @@ const servicesPath = lang === "es" ? `/es/servicios/` : `/en/services/`;
         </div>
       </div>
 
-      {/* Right column: remaining services as list */}
+      <!-- Right column: remaining services as list -->
       <div class="hidden lg:flex lg:col-span-2 flex-col gap-2">
         {services.map((service, i) => {
           const slug = lang === "es" ? service.slugEs : service.slug;
