@@ -20,9 +20,47 @@ const lang = "en";
 const canonicalUrl = `${site.url}/en/services/${service.slug}/`;
 const alternateUrl = `${site.url}/es/servicios/${service.slugEs}/`;
 
-const related = activeServices.filter(
-  (s) => service.relatedSlugs.includes(s.slug) && s.slug !== service.slug
-).slice(0, 3);
+// 1. Fetch updated photos from Sanity
+let sanityImages: Record<string, string> | null = null;
+try {
+  const query = encodeURIComponent(`*[_type == "serviceImages"] | order(_updatedAt desc)[0]{
+    "tireChange": tireChange.asset->url,
+    "reeferMaintenance": reeferMaintenance.asset->url,
+    "fuelDelivery": fuelDelivery.asset->url,
+    "jumpStart": jumpStart.asset->url,
+    "oilChange": oilChange.asset->url,
+    "brakeService": brakeService.asset->url
+  }`);
+  const res = await fetch(`https://02066cqd.api.sanity.io/v2021-03-25/data/query/production?query=${query}`);
+  if (res.ok) {
+    const data = await res.json();
+    sanityImages = data.result;
+  }
+} catch (e) {
+  console.error("Error fetching images from Sanity:", e);
+}
+
+// 2. Resolve image source with fallback to local files
+function getServiceImage(s: any): string {
+  const key = `${s.slug || ''} ${s.slugEs || ''} ${s.image || ''}`.toLowerCase();
+  if (key.includes('tire') || key.includes('neumatic')) return sanityImages?.tireChange || s.imageWide || s.image;
+  if (key.includes('reefer') || key.includes('refriger')) return sanityImages?.reeferMaintenance || s.imageWide || s.image;
+  if (key.includes('fuel') || key.includes('combustible')) return sanityImages?.fuelDelivery || s.imageWide || s.image;
+  if (key.includes('jump') || key.includes('bater') || key.includes('corriente')) return sanityImages?.jumpStart || s.imageWide || s.image;
+  if (key.includes('oil') || key.includes('aceite')) return sanityImages?.oilChange || s.imageWide || s.image;
+  if (key.includes('brake') || key.includes('freno')) return sanityImages?.brakeService || s.imageWide || s.image;
+  return s.imageWide || s.image;
+}
+
+const heroImage = getServiceImage(service);
+
+const related = activeServices
+  .filter((s) => service.relatedSlugs.includes(s.slug) && s.slug !== service.slug)
+  .slice(0, 3)
+  .map((s) => ({
+    ...s,
+    image: getServiceImage(s),
+  }));
 
 const serviceSchema = {
   "@context": "https://schema.org",
@@ -86,11 +124,11 @@ const serviceSchema = {
       </div>
       <div class="flex-shrink-0 w-full md:w-80 lg:w-96">
         <img
-          src={service.imageWide}
+          src={heroImage}
           alt={service.imageAlt.en}
           width="1200"
           height="675"
-          class="rounded-2xl w-full object-cover shadow-xl"
+          class="rounded-2xl w-full object-cover shadow-xl aspect-video md:aspect-auto"
           fetchpriority="high"
           onerror="this.onerror=null;this.src='/images/services/placeholder.webp'"
         />
