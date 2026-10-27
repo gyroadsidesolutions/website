@@ -7,12 +7,32 @@ export default defineConfig({
   projectId: '02066cqd',
   dataset: 'production',
   basePath: '/admin',
-  plugins: [structureTool()],
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Contenido')
+          .items([
+            // 1. Galería de Trabajos (permite múltiples fotos)
+            S.documentTypeListItem('gallery').title('📸 Fotos de Trabajos (Galería)'),
+            
+            // 2. Fotos Oficiales de Servicios (abre directo el documento único, sin botón de crear duplicados)
+            S.listItem()
+              .title('🛠️ Fotos de Servicios Principales')
+              .id('serviceImagesSingleton')
+              .child(
+                S.document()
+                  .schemaType('serviceImages')
+                  .documentId('serviceImagesDocument')
+              ),
+          ]),
+    }),
+  ],
   schema: {
     types: [
       {
         name: 'gallery',
-        title: '📸 Fotos de Trabajos (Galería)',
+        title: 'Fotos de Trabajos',
         type: 'document',
         fields: [
           {
@@ -45,7 +65,7 @@ export default defineConfig({
       },
       {
         name: 'serviceImages',
-        title: '🛠️ Fotos de Servicios Principales',
+        title: 'Fotos de Servicios Principales',
         type: 'document',
         fields: [
           {
