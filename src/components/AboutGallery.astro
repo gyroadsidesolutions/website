@@ -1,12 +1,175 @@
+---
+import type { Lang } from "@/i18n/index";
+import { sanityClient } from "sanity:client";
+
+export interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const es = lang === "es";
+
+// Fotos de respaldo fijas (se mantienen activas si no hay fotos en Sanity)
+const fallbackSlides = [
+  { src: "/images/about/about-1.webp", alt: es ? "Foto 1 de GY Roadside Solutions" : "GY Roadside Solutions photo 1" },
+  { src: "/images/about/about-2.webp", alt: es ? "Foto 2 de GY Roadside Solutions" : "GY Roadside Solutions photo 2" },
+  { src: "/images/about/about-3.webp", alt: es ? "Foto 3 de GY Roadside Solutions" : "GY Roadside Solutions photo 3" },
+  { src: "/images/about/about-4.webp", alt: es ? "Foto 4 de GY Roadside Solutions" : "GY Roadside Solutions photo 4" },
+  { src: "/images/about/about-5.webp", alt: es ? "Foto 5 de GY Roadside Solutions" : "GY Roadside Solutions photo 5" },
+];
+
+let slides = fallbackSlides;
+
+try {
+  const sanityPhotos = await sanityClient.fetch(`*[_type == "gallery" && defined(image.asset)] | order(date desc){
+    title,
+    "src": image.asset->url
+  }`);
+
+  if (sanityPhotos && sanityPhotos.length > 0) {
+    slides = sanityPhotos.map((item: { title?: string; src: string }, i: number) => ({
+      src: item.src,
+      alt: item.title || (es ? `Foto ${i + 1} de GY Roadside Solutions` : `GY Roadside Solutions photo ${i + 1}`),
+    }));
+  }
+} catch (error) {
+  console.warn("Usando fotos estáticas de respaldo:", error);
+}
+
+const labels = {
+  region: es ? "Galería de fotos de GY Roadside Solutions" : "GY Roadside Solutions photo gallery",
+  prev: es ? "Imagen anterior" : "Previous image",
+  next: es ? "Imagen siguiente" : "Next image",
+  goto: es ? "Ir a la imagen" : "Go to image",
+  of: es ? "de" : "of",
+};
+---
+
+<div
+  class="about-gallery relative"
+  data-gallery
+  role="group"
+  aria-roledescription="carousel"
+  aria-label={labels.region}
+>
+  <div class="relative overflow-hidden rounded-3xl shadow-card ring-1 ring-black/5">
+    <!-- Slides track -->
+    <div class="track flex" data-track>
+      {slides.map((s, i) => (
+        <div
+          class="slide relative aspect-[16/10] w-full flex-shrink-0 sm:aspect-[16/9]"
+          role="group"
+          aria-roledescription="slide"
+          aria-label={`${i + 1} ${labels.of} ${slides.length}`}
+        >
+          <img
+            src={s.src}
+            alt={s.alt}
+            width="1280"
+            height="720"
+            class="h-full w-full object-cover"
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            fetchpriority={i === 0 ? "high" : undefined}
+          />
+          <!-- Gradient overlay for legibility -->
+          <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/75 via-primary/5 to-transparent" aria-hidden="true"></div>
+          <!-- Counter badge -->
+          <span class="absolute right-4 top-4 rounded-full bg-black/35 px-3 py-1 text-xs font-bold tracking-wide text-white backdrop-blur-sm">
+            {i + 1} / {slides.length}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Prev / Next controls -->
+    <button
+      type="button"
+      data-prev
+      class="nav nav-prev absolute left-3 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white/25 text-white backdrop-blur-md ring-1 ring-white/40 transition hover:bg-white/40 active:scale-95 sm:left-5"
+      aria-label={labels.prev}
+    >
+      <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button
+      type="button"
+      data-next
+      class="nav nav-next absolute right-3 top-1/2 -translate-y-1/2 grid h-11 w-11 place-items-center rounded-full bg-white/25 text-white backdrop-blur-md ring-1 ring-white/40 transition hover:bg-white/40 active:scale-95 sm:right-5"
+      aria-label={labels.next}
+    >
+      <svg aria-hidden="true" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Dot indicators -->
+  <div class="mt-5 flex items-center justify-center gap-2.5" data-dots>
+    {slides.map((_, i) => (
+      <button
+        type="button"
+        class="dot"
+        data-dot={String(i)}
+        role="tab"
+        aria-selected={i === 0 ? "true" : "false"}
+        aria-label={`${labels.goto} ${i + 1}`}
+      ></button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .track {
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .slide img {
+    transform: scale(1);
+  }
+  .slide.is-active img {
+    animation: kenburns 6.5s ease-out forwards;
+  }
+  @keyframes kenburns {
+    from { transform: scale(1.02); }
+    to   { transform: scale(1.12); }
+  }
+  .dot {
+    height: 9px;
+    width: 9px;
+    border-radius: 9999px;
+    background: rgba(13, 27, 46, 0.28);
+    transition: width 0.35s ease, background-color 0.35s ease;
+  }
+  .dot:hover {
+    background: rgba(13, 27, 46, 0.5);
+  }
+  .dot-active {
+    width: 30px;
+    background: #f5c518;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .track { transition: none; }
+    .slide.is-active img { animation: none; }
+  }
+</style>
+
 <script>
-  const root = document.querySelector<HTMLElement>("[data-gallery]");
-  if (root) {
-    const track = root.querySelector<HTMLElement>("[data-track]")!;
+  function initGallery() {
+    const root = document.querySelector<HTMLElement>("[data-gallery]");
+    if (!root) return;
+
+    const track = root.querySelector<HTMLElement>("[data-track]");
+    if (!track) return;
+
     const slideEls = Array.from(track.children) as HTMLElement[];
     const dots = Array.from(root.querySelectorAll<HTMLElement>("[data-dot]"));
-    const prevBtn = root.querySelector<HTMLElement>("[data-prev]")!;
-    const nextBtn = root.querySelector<HTMLElement>("[data-next]")!;
+    const prevBtn = root.querySelector<HTMLElement>("[data-prev]");
+    const nextBtn = root.querySelector<HTMLElement>("[data-next]");
     const N = slideEls.length;
+    if (N <= 1) return;
+
     let index = 0;
     let timer: ReturnType<typeof setInterval> | undefined;
 
@@ -20,15 +183,28 @@
         d.classList.toggle("dot-active", active);
       });
     };
+
     const next = () => go(index + 1);
     const prev = () => go(index - 1);
-    const stop = () => { if (timer) { clearInterval(timer); timer = undefined; } };
-    const start = () => { stop(); timer = setInterval(next, 3000); };
+    const stop = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = undefined;
+      }
+    };
+    const start = () => {
+      stop();
+      timer = setInterval(next, 3000);
+    };
 
-    nextBtn.addEventListener("click", () => { next(); start(); });
-    prevBtn.addEventListener("click", () => { prev(); start(); });
+    if (nextBtn) nextBtn.addEventListener("click", () => { next(); start(); });
+    if (prevBtn) prevBtn.addEventListener("click", () => { prev(); start(); });
+
     dots.forEach((d) =>
-      d.addEventListener("click", () => { go(Number(d.dataset.dot)); start(); })
+      d.addEventListener("click", () => {
+        go(Number(d.dataset.dot));
+        start();
+      })
     );
 
     root.addEventListener("mouseenter", stop);
@@ -36,19 +212,19 @@
     root.addEventListener("focusin", stop);
     root.addEventListener("focusout", start);
 
-    root.setAttribute("tabindex", "0");
-    root.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowRight") { next(); start(); }
-      if (e.key === "ArrowLeft") { prev(); start(); }
-    });
-
-    // Soporte para deslizar con el dedo en celular
+    // Deslizamiento táctil para celulares
     let startX: number | null = null;
-    track.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; stop(); }, { passive: true });
+    track.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      stop();
+    }, { passive: true });
+
     track.addEventListener("touchend", (e) => {
       if (startX === null) return;
       const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+      if (Math.abs(dx) > 40) {
+        dx < 0 ? next() : prev();
+      }
       startX = null;
       start();
     });
@@ -56,4 +232,11 @@
     go(0);
     start();
   }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGallery);
+  } else {
+    initGallery();
+  }
+  document.addEventListener("astro:page-load", initGallery);
 </script>
