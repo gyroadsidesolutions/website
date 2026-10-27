@@ -13,10 +13,17 @@ export default defineConfig({
         S.list()
           .title('Contenido')
           .items([
-            // 1. Galería de Trabajos (permite múltiples fotos)
-            S.documentTypeListItem('gallery').title('📸 Fotos de Trabajos (Galería)'),
-            
-            // 2. Fotos Oficiales de Servicios (abre directo el documento único, sin botón de crear duplicados)
+            // 1. Foto de Portada Principal (Hero) - Acceso directo único
+            S.listItem()
+              .title('🚛 Foto de Portada (Hero)')
+              .id('heroSettingsSingleton')
+              .child(
+                S.document()
+                  .schemaType('heroSettings')
+                  .documentId('heroSettingsDocument')
+              ),
+
+            // 2. Fotos Oficiales de Servicios - Acceso directo único
             S.listItem()
               .title('🛠️ Fotos de Servicios Principales')
               .id('serviceImagesSingleton')
@@ -25,11 +32,38 @@ export default defineConfig({
                   .schemaType('serviceImages')
                   .documentId('serviceImagesDocument')
               ),
+
+            // 3. Galería de Trabajos en Carretera (múltiples fotos)
+            S.documentTypeListItem('gallery').title('📸 Fotos de Trabajos (Galería)'),
           ]),
     }),
   ],
   schema: {
     types: [
+      {
+        name: 'heroSettings',
+        title: 'Foto de Portada Principal (Hero)',
+        type: 'document',
+        fields: [
+          {
+            name: 'title',
+            title: 'Identificador',
+            type: 'string',
+            initialValue: 'Foto Principal del Hero',
+            readOnly: true,
+            hidden: true,
+          },
+          {
+            name: 'image',
+            title: 'Foto Principal de Portada',
+            description: 'Sube la foto horizontal (16:9). El sistema la optimiza y recorta automáticamente para teléfonos.',
+            type: 'image',
+            options: {
+              hotspot: true,
+            },
+          },
+        ],
+      },
       {
         name: 'gallery',
         title: 'Fotos de Trabajos',
