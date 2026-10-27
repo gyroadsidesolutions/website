@@ -12,6 +12,40 @@ export interface Props {
 const { service, lang, featured = false } = Astro.props;
 const tr = t(lang);
 
+// 1. Consultar fotos de Sanity
+let sanityImages: Record<string, string> | null = null;
+try {
+  const query = encodeURIComponent(`*[_type == "serviceImages"] | order(_updatedAt desc)[0]{
+    "tireChange": tireChange.asset->url,
+    "reeferMaintenance": reeferMaintenance.asset->url,
+    "fuelDelivery": fuelDelivery.asset->url,
+    "jumpStart": jumpStart.asset->url,
+    "oilChange": oilChange.asset->url,
+    "brakeService": brakeService.asset->url
+  }`);
+  const res = await fetch(`https://02066cqd.api.sanity.io/v2021-03-25/data/query/production?query=${query}`);
+  if (res.ok) {
+    const data = await res.json();
+    sanityImages = data.result;
+  }
+} catch (e) {
+  console.error("Error al obtener imágenes de Sanity en ServiceCard:", e);
+}
+
+// 2. Vincular imagen de Sanity con respaldo a las fotos locales
+function getServiceImage(s: any): string {
+  const key = `${s.slug || ''} ${s.slugEs || ''} ${s.image || ''} ${s.imageWide || ''}`.toLowerCase();
+  if (key.includes('tire') || key.includes('neumatic')) return sanityImages?.tireChange || s.imageWide || s.image;
+  if (key.includes('reefer') || key.includes('refriger')) return sanityImages?.reeferMaintenance || s.imageWide || s.image;
+  if (key.includes('fuel') || key.includes('combustible')) return sanityImages?.fuelDelivery || s.imageWide || s.image;
+  if (key.includes('jump') || key.includes('bater') || key.includes('corriente')) return sanityImages?.jumpStart || s.imageWide || s.image;
+  if (key.includes('oil') || key.includes('aceite')) return sanityImages?.oilChange || s.imageWide || s.image;
+  if (key.includes('brake') || key.includes('freno')) return sanityImages?.brakeService || s.imageWide || s.image;
+  return s.imageWide || s.image;
+}
+
+const cardImage = getServiceImage(service);
+
 const href = lang === "es"
   ? `/es/servicios/${service.slugEs}/`
   : `/en/services/${service.slug}/`;
@@ -24,7 +58,7 @@ const href = lang === "es"
   <!-- Image -->
   <div class="relative overflow-hidden aspect-[16/9] bg-gray-100">
     <img
-      src={service.imageWide}
+      src={cardImage}
       alt={service.imageAlt[lang]}
       width="480"
       height="270"
