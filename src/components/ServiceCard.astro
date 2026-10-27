@@ -67,14 +67,8 @@ const href = lang === "es"
       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       onerror="this.onerror=null;this.src='/images/services/placeholder.webp'"
     />
-    {featured && (
-      <div class="absolute top-3 left-3">
-        <span class="badge-secondary text-xs font-bold">
-          {lang === "es" ? "Destacado" : "Featured"}
-        </span>
-      </div>
-    )}
-    <div class="absolute top-3 right-3 text-2xl" aria-hidden="true">
+    
+<div class="absolute top-3 right-3 text-2xl" aria-hidden="true">
       {service.icon}
     </div>
   </div>
