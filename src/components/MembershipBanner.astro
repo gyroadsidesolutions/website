@@ -1,0 +1,63 @@
+---
+interface Props {
+  lang: "es" | "en";
+}
+
+const { lang } = Astro.props;
+
+const content = {
+  es: {
+    badge: "PRÓXIMAMENTE",
+    title: "Membresía VIP Roadside para Camioneros y Flotas",
+    subtitle: "Evita gastos imprevistos de miles de dólares en carretera. Con nuestra suscripción mensual obtienes asistencia de emergencia prioritaria 24/7 y cobertura de servicios en Dallas-Fort Worth.",
+    benefit1: "Despacho prioritario de auxilio vial 24/7",
+    benefit2: "Paso de corriente, aire comprimido y cambios de neumáticos incluidos",
+    benefit3: "Tarifas fijas sin recargos abusivos de madrugada",
+    cta: "Llamar para información de preventa",
+  },
+  en: {
+    badge: "COMING SOON",
+    title: "VIP Roadside Membership for Owner-Operators & Fleets",
+    subtitle: "Protect your bottom line against unexpected high-dollar breakdowns. Get 24/7 priority emergency dispatch and coverage across Dallas-Fort Worth with a predictable monthly plan.",
+    benefit1: "24/7 priority roadside dispatch",
+    benefit2: "Jump starts, air line repair & mounted tire changes included",
+    benefit3: "Locked-in rates with zero late-night price gouging",
+    cta: "Call for Early Access Info",
+  },
+};
+
+const t = content[lang];
+---
+
+<section class="py-12 bg-slate-900 border-y border-amber-500/20 text-white relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+    <span class="inline-block py-1 px-3 rounded-full text-xs font-bold tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase mb-4">
+      {t.badge}
+    </span>
+    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
+      {t.title}
+    </h2>
+    <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-8">
+      {t.subtitle}
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-3xl mx-auto mb-8">
+      <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-700">
+        <p class="text-amber-400 font-semibold text-sm">✓ {t.benefit1}</p>
+      </div>
+      <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-700">
+        <p class="text-amber-400 font-semibold text-sm">✓ {t.benefit2}</p>
+      </div>
+      <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-700">
+        <p class="text-amber-400 font-semibold text-sm">✓ {t.benefit3}</p>
+      </div>
+    </div>
+
+    <a
+      href="tel:+12143027757"
+      class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-slate-900 bg-amber-400 hover:bg-amber-300 shadow-md transition"
+    >
+      📞 {t.cta}
+    </a>
+  </div>
+</section>
