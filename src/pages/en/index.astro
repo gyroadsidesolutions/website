@@ -9,6 +9,7 @@ import CoverageStrip from "@/components/CoverageStrip.astro";
 import AboutTeaser from "@/components/AboutTeaser.astro";
 import FAQ from "@/components/FAQ.astro";
 import GoogleReviewsCTA from "@/components/GoogleReviewsCTA.astro";
+import MembershipBanner from "@/components/MembershipBanner.astro";
 import { t } from "@/i18n/index";
 import business from "@/data/business";
 import site from "@/config/site";
@@ -32,8 +33,8 @@ const pageSchema = {
 ---
 
 <BaseLayout
-  title={`${business.name} — Roadside Assistance for Commercial Trucks and Other Vehicles`}
-  description="GY Roadside Solutions LLC provides mobile assistance for commercial trucks and other vehicles in the Dallas-Fort Worth, Texas area: tires, brakes, fuel, reefer units, oil changes and emergency jump starts."
+  title={`${business.name} — Roadside Assistance for Commercial Trucks & Vehicles`}
+  description="GY Roadside Solutions LLC provides mobile roadside assistance for commercial trucks and vehicles across Dallas-Fort Worth, Texas: tires, brakes, fuel, reefers, oil, and emergency jump starts."
   lang={lang}
   canonicalUrl={canonicalUrl}
   alternateUrl={alternateUrl}
@@ -41,38 +42,41 @@ const pageSchema = {
 >
   <Hero lang={lang} />
 
-  <!-- 3-step process -->
+  <!-- How It Works (3 Steps) -->
   <HowItWorks lang={lang} />
 
-  <!-- Services highlight -->
+  <!-- Featured Services -->
   <ServiceGrid lang={lang} featuredOnly limit={6} />
 
-  <!-- Qualitative credibility band -->
+  <!-- Credibility Band -->
   <StatsBand lang={lang} />
 
-  <!-- Trust signals + CTA strip -->
+  <!-- Trust Signals + CTA -->
   <TrustSection lang={lang} />
 
-  <!-- Coverage + embedded map -->
+  <!-- Coverage + Map -->
   <CoverageStrip lang={lang} />
 
-  <!-- Humanize the brand -->
+  <!-- Brand Humanization -->
   <AboutTeaser lang={lang} />
 
   <!-- SEO FAQ -->
   <FAQ lang={lang} items={homeFAQ} />
 
-  <!-- Google reviews funnel -->
+  <!-- Google Reviews Funnel -->
   <GoogleReviewsCTA lang={lang} />
 
-  <!-- Final CTA section -->
+  <!-- VIP Membership Presale Banner -->
+  <MembershipBanner lang={lang} />
+
+  <!-- Final CTA -->
   <section class="section bg-light" aria-labelledby="cta2-heading">
     <div class="container text-center max-w-2xl">
       <h2 id="cta2-heading" class="text-primary mb-4">
-        Need Assistance for Your Vehicle?
+        Need Roadside Assistance for Your Vehicle?
       </h2>
       <p class="text-muted text-lg mb-8">
-        Contact GY Roadside Solutions LLC to request mobile service for commercial trucks and other vehicles in the Dallas-Fort Worth, Texas area.
+        Contact GY Roadside Solutions LLC for rapid mobile dispatch for commercial trucks and vehicles throughout the Dallas-Fort Worth, Texas metro area.
       </p>
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-4 justify-center">
         <a href={`tel:${business.phone}`} class="btn-primary self-center text-center text-base sm:text-lg sm:whitespace-nowrap py-4 px-6 sm:px-10">
@@ -82,8 +86,8 @@ const pageSchema = {
           </svg>
           Call Now — {business.phoneDisplay}
         </a>
-        <a href="/en/contact-us/" class="btn-outline-dark text-lg py-4 px-10">
-          Request Assistance
+        <a href="/en/contact/" class="btn-outline-dark text-lg py-4 px-10">
+          Request Service
         </a>
       </div>
     </div>
