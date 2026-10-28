@@ -18,54 +18,34 @@ const gaId = site.analytics.gaId;
         send_page_view: true,
       });
 
-      // Función de despacho único hacia Google Analytics
-      function dispatchCall(phone) {
-        if (window.__callLogged) return;
-        window.__callLogged = true;
-        setTimeout(function () {
-          window.__callLogged = false;
-        }, 1500);
+      // Interceptor optimizado para móviles y computadoras
+      document.addEventListener("click", function (event) {
+        var phoneLink = event.target && event.target.closest ? event.target.closest('a[href^="tel:"]') : null;
+        if (!phoneLink) return;
 
+        var phoneUrl = phoneLink.getAttribute("href");
+        if (!phoneUrl) return;
+
+        // 1. Evita que el celular congele el navegador antes de enviar los datos
+        event.preventDefault();
+
+        // 2. Dispara los eventos a Google Analytics
         gtag("event", "click_to_call", {
           event_category: "Conversion",
-          event_label: phone,
-          transport_type: "beacon",
+          event_label: phoneUrl,
           value: 1,
         });
 
         gtag("event", "generate_lead", {
           currency: "USD",
-          transport_type: "beacon",
           value: 1,
         });
-      }
 
-      // 1. Detección táctil anticipada para celulares (se ejecuta antes de abrir el marcador)
-      var touchEvent = "PointerEvent" in window ? "pointerdown" : "touchstart";
-      document.addEventListener(
-        touchEvent,
-        function (e) {
-          var link = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
-          if (link) {
-            var phone = link.getAttribute("href") || "+12143027757";
-            dispatchCall(phone);
-          }
-        },
-        { capture: true, passive: true }
-      );
-
-      // 2. Respaldo para clics convencionales en computadoras
-      document.addEventListener(
-        "click",
-        function (e) {
-          var link = e.target && e.target.closest ? e.target.closest('a[href^="tel:"]') : null;
-          if (link) {
-            var phone = link.getAttribute("href") || "+12143027757";
-            dispatchCall(phone);
-          }
-        },
-        true
-      );
+        // 3. Da 250 ms para asegurar la salida del paquete a Google antes de abrir la app del teléfono
+        setTimeout(function () {
+          window.location.href = phoneUrl;
+        }, 250);
+      });
     </script>
   </>
 )}
