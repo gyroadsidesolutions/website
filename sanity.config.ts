@@ -1,12 +1,29 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 
+// Documentos fijos que quedan protegidos contra borrado accidental
+const singletonTypes = new Set(['heroSettings', 'aboutSettings', 'serviceImages']);
+
 export default defineConfig({
   name: 'default',
   title: 'GY Roadside Solutions — Panel',
   projectId: '02066cqd',
   dataset: 'production',
   basePath: '/admin',
+
+  // Bloqueo de seguridad: elimina las acciones de borrar, despublicar y duplicar
+  document: {
+    actions: (prev, context) => {
+      if (singletonTypes.has(context.schemaType)) {
+        return prev.filter((originalAction) => {
+          const actionName = originalAction.action;
+          return actionName ? !['delete', 'unpublish', 'duplicate'].includes(actionName) : true;
+        });
+      }
+      return prev;
+    },
+  },
+
   plugins: [
     structureTool({
       structure: (S) =>
