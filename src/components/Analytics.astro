@@ -1,7 +1,7 @@
 ---
 import site from "@/config/site";
 
-const gaId = site.analytics.gaId;
+const gaId = site.analytics?.gaId || "G-GKQ9XH44TE";
 ---
 
 {gaId && (
@@ -18,33 +18,25 @@ const gaId = site.analytics.gaId;
         send_page_view: true,
       });
 
-      // Interceptor optimizado para móviles y computadoras
+      // Interceptor optimizado con transporte beacon para llamadas móviles
       document.addEventListener("click", function (event) {
         var phoneLink = event.target && event.target.closest ? event.target.closest('a[href^="tel:"]') : null;
         if (!phoneLink) return;
 
-        var phoneUrl = phoneLink.getAttribute("href");
-        if (!phoneUrl) return;
+        var phoneUrl = phoneLink.getAttribute("href") || "";
 
-        // 1. Evita que el celular congele el navegador antes de enviar los datos
-        event.preventDefault();
-
-        // 2. Dispara los eventos a Google Analytics
         gtag("event", "click_to_call", {
           event_category: "Conversion",
           event_label: phoneUrl,
           value: 1,
+          transport_type: "beacon",
         });
 
         gtag("event", "generate_lead", {
           currency: "USD",
           value: 1,
+          transport_type: "beacon",
         });
-
-        // 3. Da 250 ms para asegurar la salida del paquete a Google antes de abrir la app del teléfono
-        setTimeout(function () {
-          window.location.href = phoneUrl;
-        }, 250);
       });
     </script>
   </>
