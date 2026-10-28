@@ -1,8 +1,21 @@
 ---
 import type { Lang } from "@/i18n/index";
+import { sanityClient } from "sanity:client";
+import imageUrlBuilder from "@sanity/image-url";
 
 export interface Props { lang: Lang; }
 const { lang } = Astro.props;
+
+const builder = imageUrlBuilder(sanityClient);
+
+// Consulta la foto fija institucional del equipo configurada en Sanity Studio
+const aboutData = await sanityClient.fetch(
+  `*[_type == "aboutSettings"][0]{ image }`
+);
+
+const aboutImageUrl = aboutData?.image
+  ? builder.image(aboutData.image).width(1000).auto("format").url()
+  : "/images/about/about-us.webp";
 ---
 
 <section class="section bg-light" aria-labelledby="about-teaser-heading">
@@ -10,7 +23,7 @@ const { lang } = Astro.props;
     <div class="about-grid">
       <div class="about-media">
         <img
-          src="/images/about/about-us.webp"
+          src={aboutImageUrl}
           alt={lang === "es"
             ? "Equipo de GY Roadside Solutions asistiendo un camión comercial"
             : "GY Roadside Solutions team assisting a commercial truck"}
