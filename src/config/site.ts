@@ -11,13 +11,9 @@ const site = {
   // browser UI, theme-color meta and manifest stay consistent.
   themeColor: "#0D1B2E",
 
-  // Analytics & Search Console are intentionally DISABLED: every field is empty
-  // until the client provides real IDs. With empty values, Analytics.astro and
-  // the google-site-verification meta render nothing (no third-party requests).
-  // To enable later, set PUBLIC_GA_ID / PUBLIC_GTM_ID / PUBLIC_GSC_VERIFICATION
-  // in the environment (see .env.example) — no code change required.
+  // Analytics & Search Console configuration
   analytics: {
-    gaId:            import.meta.env.PUBLIC_GA_ID            ?? "",
+    gaId:            import.meta.env.PUBLIC_GA_ID            ?? "G-GKQ9XH44TE",
     gtmId:           import.meta.env.PUBLIC_GTM_ID           ?? "",
     gscVerification: import.meta.env.PUBLIC_GSC_VERIFICATION ?? "BpqZwQBLMXdCqm8lbkpkMFLLdiT57_b5vyYSashzALY",
   },
