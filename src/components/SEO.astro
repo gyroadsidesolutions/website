@@ -109,11 +109,7 @@ const localBizSchema = {
   sameAs,
 };
 
-const schemas: Record<string, unknown>[] = structuredData
-  ? Array.isArray(structuredData)
-    ? structuredData
-    : [structuredData]
-  : [localBizSchema];
+const schemas: Record<string, unknown>[] = [localBizSchema];
 ---
 
 <meta charset="UTF-8" />
