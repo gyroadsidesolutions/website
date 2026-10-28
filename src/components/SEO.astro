@@ -48,14 +48,20 @@ const sameAs = [
 
 const localBizSchema = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "AutomotiveBusiness"],
+  "@type": ["EmergencyService", "AutoRepair", "LocalBusiness"],
   name: business.name,
+  legalName: "GY Roadside Solutions LLC",
   url: site.url,
+  logo: `${site.url}/images/Code_Generated_Image.webp`,
+  image: fullOgImage,
+  description: lang === "es"
+    ? "Servicio móvil de asistencia en carretera, auxilio mecánico y reparación para camiones comerciales en Dallas-Fort Worth, Texas."
+    : "Mobile roadside assistance and commercial truck repair services across the Dallas-Fort Worth, Texas metropolitan area.",
   telephone: business.phone,
   email: business.email,
   priceRange: "$$",
   currenciesAccepted: "USD",
-  paymentAccepted: "Cash, Credit Card",
+  paymentAccepted: "Cash, Credit Card, Zelle",
   address: {
     "@type": "PostalAddress",
     streetAddress: business.address,
@@ -70,7 +76,29 @@ const localBizSchema = {
     longitude: business.longitude,
   },
   hasMap: business.googleMapsLink,
-  // Service area limited to the confirmed Dallas-Fort Worth cities (src/data/serviceAreas.ts)
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "00:00",
+      closes: "23:59",
+    },
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: business.phone,
+    contactType: "emergency",
+    areaServed: "US-TX",
+    availableLanguage: ["Spanish", "English"],
+  },
   areaServed: confirmedAreas.map((area) => ({
     "@type": "City",
     name: `${area.city}, ${area.stateCode}`,
@@ -98,14 +126,14 @@ const schemas: Record<string, unknown>[] = structuredData
 <link rel="alternate" hreflang={curLangFull}  href={canonicalUrl} />
 <link rel="alternate" hreflang="x-default"    href={`${site.url}/en/`} />
 
-<meta property="og:type"              content={ogType} />
-<meta property="og:url"               content={canonicalUrl} />
-<meta property="og:title"             content={fullTitle} />
-<meta property="og:description"       content={description} />
-<meta property="og:image"             content={fullOgImage} />
-<meta property="og:image:alt"         content={`${business.name} — ${title}`} />
-<meta property="og:site_name"         content={business.name} />
-<meta property="og:locale"            content={curLangFull} />
+<meta property="og:type"               content={ogType} />
+<meta property="og:url"                content={canonicalUrl} />
+<meta property="og:title"              content={fullTitle} />
+<meta property="og:description"        content={description} />
+<meta property="og:image"              content={fullOgImage} />
+<meta property="og:image:alt"          content={`${business.name} — ${title}`} />
+<meta property="og:site_name"          content={business.name} />
+<meta property="og:locale"             content={curLangFull} />
 {alternateUrl && (
   <meta property="og:locale:alternate" content={altLangFull} />
 )}
