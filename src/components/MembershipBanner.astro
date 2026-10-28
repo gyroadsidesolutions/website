@@ -7,22 +7,22 @@ const { lang } = Astro.props;
 
 const content = {
   es: {
-    badge: "PRÓXIMAMENTE",
+    badge: "MEMBRESÍA DISPONIBLE",
     title: "Membresía VIP Roadside para Camioneros y Flotas",
     subtitle: "Evita gastos imprevistos de miles de dólares en carretera. Con nuestra suscripción mensual obtienes asistencia de emergencia prioritaria 24/7 y cobertura de servicios en Dallas-Fort Worth.",
-    benefit1: "Despacho prioritario de auxilio vial 24/7",
-    benefit2: "Paso de corriente, aire comprimido y cambios de neumáticos incluidos",
-    benefit3: "Tarifas fijas sin recargos abusivos de madrugada",
-    cta: "Llamar para información de preventa",
+    benefit1: "Despacho prioritario de auxilio vial < 45 min",
+    benefit2: "Paso de corriente 24V, aire y asistencias menores incluidas",
+    benefit3: "Tarifas congeladas y descuentos en mecánica móvil y grúa",
+    cta: "Ver Planes y Precios VIP",
   },
   en: {
-    badge: "COMING SOON",
+    badge: "MEMBERSHIP AVAILABLE",
     title: "VIP Roadside Membership for Owner-Operators & Fleets",
     subtitle: "Protect your bottom line against unexpected high-dollar breakdowns. Get 24/7 priority emergency dispatch and coverage across Dallas-Fort Worth with a predictable monthly plan.",
-    benefit1: "24/7 priority roadside dispatch",
-    benefit2: "Jump starts, air line repair & mounted tire changes included",
-    benefit3: "Locked-in rates with zero late-night price gouging",
-    cta: "Call for Early Access Info",
+    benefit1: "Priority roadside dispatch under 45 minutes",
+    benefit2: "24V jump starts, compressed air & minor calls included",
+    benefit3: "Locked-in rates and discounts on mobile repair & towing",
+    cta: "View VIP Plans & Pricing",
   },
 };
 
@@ -53,8 +53,11 @@ const t = content[lang];
       </div>
     </div>
 
-    <a href="tel:+12143027757" class="...">
-  📞 {t.cta}
-</a>
+    <a
+      href={`/${lang}/vip/`}
+      class="inline-flex items-center justify-center font-bold px-8 py-4 rounded-xl text-slate-950 bg-amber-400 hover:bg-amber-300 transition duration-200 shadow-lg text-base sm:text-lg"
+    >
+      ⭐ {t.cta} →
+    </a>
   </div>
 </section>
