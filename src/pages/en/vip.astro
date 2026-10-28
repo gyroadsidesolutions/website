@@ -1,10 +1,19 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import business from "@/data/business";
+import site from "@/config/site";
+
+const lang = "en";
+const canonicalUrl = `${site.url}/en/vip/`;
+const alternateUrl = `${site.url}/es/vip/`;
 ---
 
-<Layout
-  title="VIP Roadside Membership | GY Roadside Solutions DFW"
+<BaseLayout
+  title={`VIP Roadside Membership | ${business.name}`}
   description="Priority 24/7 commercial roadside assistance and locked-in rates for owner-operators and fleets in Dallas-Fort Worth."
+  lang={lang}
+  canonicalUrl={canonicalUrl}
+  alternateUrl={alternateUrl}
 >
   <main class="min-h-screen bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-5xl mx-auto text-center mb-12">
@@ -53,10 +62,10 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <a
-          href="tel:+12143027757"
+          href={`tel:${business.phone}`}
           class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-md block text-base"
         >
-          Enroll Solo Plan: (214) 302-7757
+          Enroll Solo Plan: {business.phoneDisplay}
         </a>
       </div>
 
@@ -99,10 +108,10 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <a
-          href="tel:+12143027757"
+          href={`tel:${business.phone}`}
           class="w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-md block text-base"
         >
-          Enroll Fleet Plan: (214) 302-7757
+          Enroll Fleet Plan: {business.phoneDisplay}
         </a>
       </div>
 
@@ -110,11 +119,11 @@ import Layout from "../../layouts/Layout.astro";
 
     <!-- Support Notice -->
     <div class="max-w-3xl mx-auto text-center mt-12 text-slate-400 text-sm">
-      <p>No long-term commitments. Instant phone enrollment on your first call.</p>
+      <p>No long-term contracts. Instant phone enrollment on your first call.</p>
       <p class="mt-2">
         Managing more than 5 commercial units? Call for custom enterprise rates at 
-        <a href="tel:+12143027757" class="text-blue-400 font-semibold underline">(214) 302-7757</a>.
+        <a href={`tel:${business.phone}`} class="text-blue-400 font-semibold underline">{business.phoneDisplay}</a>.
       </p>
     </div>
   </main>
-</Layout>
+</BaseLayout>
