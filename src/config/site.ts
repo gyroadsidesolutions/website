@@ -19,7 +19,7 @@ const site = {
   analytics: {
     gaId:            import.meta.env.PUBLIC_GA_ID            ?? "",
     gtmId:           import.meta.env.PUBLIC_GTM_ID           ?? "",
-    gscVerification: import.meta.env.PUBLIC_GSC_VERIFICATION ?? "",
+    gscVerification: import.meta.env.PUBLIC_GSC_VERIFICATION ?? "BpqZwQBLMXdCqm8lbkpkMFLLdiT57_b5vyYSashzALY",
   },
 
   form: {
