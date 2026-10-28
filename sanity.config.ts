@@ -41,14 +41,14 @@ export default defineConfig({
               ),
 
             // 2. Foto Sección Sobre Nosotros / Equipo
-            S.listItem()
-              .title('👥 Foto Sobre Nosotros (About)')
-              .id('aboutSettingsSingleton')
-              .child(
-                S.document()
-                  .schemaType('aboutSettings')
-                  .documentId('aboutSettingsDocument')
-              ),
+S.listItem()
+  .title('👥 Foto Sobre Nosotros (About)')
+  .id('aboutSettingsSingleton')
+  .child(
+    S.document()
+      .schemaType('aboutSettings')
+      .documentId('aboutSettings')
+  ),
 
             // 3. Fotos Oficiales de Servicios
             S.listItem()
