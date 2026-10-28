@@ -1,7 +1,7 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 
-// Documentos fijos que quedan protegidos contra borrado accidental
+// Documentos fijos protegidos contra borrado accidental
 const singletonTypes = new Set(['heroSettings', 'aboutSettings', 'serviceImages']);
 
 export default defineConfig({
@@ -11,7 +11,7 @@ export default defineConfig({
   dataset: 'production',
   basePath: '/admin',
 
-  // Bloqueo de seguridad: elimina las acciones de borrar, despublicar y duplicar
+  // Bloqueo de seguridad: oculta borrar, despublicar y duplicar
   document: {
     actions: (prev, context) => {
       if (singletonTypes.has(context.schemaType)) {
@@ -30,7 +30,7 @@ export default defineConfig({
         S.list()
           .title('Contenido')
           .items([
-            // 1. Foto de Portada Principal (Hero) - Acceso directo único
+            // 1. Foto de Portada Principal (Hero)
             S.listItem()
               .title('🚛 Foto de Portada (Hero)')
               .id('heroSettingsSingleton')
@@ -40,7 +40,7 @@ export default defineConfig({
                   .documentId('heroSettingsDocument')
               ),
 
-            // 2. Foto Sección Sobre Nosotros / Equipo - Acceso directo único
+            // 2. Foto Sección Sobre Nosotros / Equipo
             S.listItem()
               .title('👥 Foto Sobre Nosotros (About)')
               .id('aboutSettingsSingleton')
@@ -50,7 +50,7 @@ export default defineConfig({
                   .documentId('aboutSettingsDocument')
               ),
 
-            // 3. Fotos Oficiales de Servicios - Acceso directo único
+            // 3. Fotos Oficiales de Servicios
             S.listItem()
               .title('🛠️ Fotos de Servicios Principales')
               .id('serviceImagesSingleton')
@@ -60,7 +60,7 @@ export default defineConfig({
                   .documentId('serviceImagesDocument')
               ),
 
-            // 4. Galería de Trabajos en Carretera (múltiples fotos)
+            // 4. Galería de Trabajos en Carretera
             S.documentTypeListItem('gallery').title('📸 Fotos de Trabajos (Galería)'),
           ]),
     }),
@@ -71,6 +71,15 @@ export default defineConfig({
         name: 'heroSettings',
         title: 'Foto de Portada Principal (Hero)',
         type: 'document',
+        preview: {
+          select: { media: 'image' },
+          prepare({ media }) {
+            return {
+              title: 'Foto Principal del Hero',
+              media,
+            };
+          },
+        },
         fields: [
           {
             name: 'title',
@@ -95,6 +104,15 @@ export default defineConfig({
         name: 'aboutSettings',
         title: 'Foto Sobre Nosotros',
         type: 'document',
+        preview: {
+          select: { media: 'image' },
+          prepare({ media }) {
+            return {
+              title: 'Foto del Equipo / Sobre Nosotros',
+              media,
+            };
+          },
+        },
         fields: [
           {
             name: 'title',
@@ -152,6 +170,13 @@ export default defineConfig({
         name: 'serviceImages',
         title: 'Fotos de Servicios Principales',
         type: 'document',
+        preview: {
+          prepare() {
+            return {
+              title: 'Fotos Oficiales de Servicios',
+            };
+          },
+        },
         fields: [
           {
             name: 'title',
