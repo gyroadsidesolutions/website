@@ -49,10 +49,10 @@ const tr = t(lang);
       <!-- Logo -->
       <a href={`/${lang}/`} class="flex items-center gap-2 flex-shrink-0" aria-label={`${business.name} — Home`}>
         <img
-          src="/images/logo.webp"
+          src="/images/logoGY.jpeg"
           alt={`${business.name} logo`}
           width="180" height="56"
-          class="h-10 md:h-12 w-auto object-contain"
+          class="h-10 md:h-12 w-auto object-contain rounded-md"
           fetchpriority="high"
           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
         />
@@ -136,8 +136,6 @@ const tr = t(lang);
 </header>
 
 <style>
-  /* With viewport-fit=cover the sticky header must clear the iOS status bar /
-     notch; the bg-primary fill keeps the notch area on-brand (dark navy). */
   header {
     padding-top: env(safe-area-inset-top);
   }
