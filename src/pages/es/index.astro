@@ -9,6 +9,7 @@ import CoverageStrip from "@/components/CoverageStrip.astro";
 import AboutTeaser from "@/components/AboutTeaser.astro";
 import FAQ from "@/components/FAQ.astro";
 import GoogleReviewsCTA from "@/components/GoogleReviewsCTA.astro";
+import MembershipBanner from "@/components/MembershipBanner.astro";
 import { t } from "@/i18n/index";
 import business from "@/data/business";
 import site from "@/config/site";
@@ -64,6 +65,9 @@ const pageSchema = {
 
   <!-- Embudo de reseñas de Google -->
   <GoogleReviewsCTA lang={lang} />
+
+  <!-- Bloque Membresía VIP Preventa -->
+  <MembershipBanner lang={lang} />
 
   <!-- CTA final -->
   <section class="section bg-light" aria-labelledby="cta2-heading">
