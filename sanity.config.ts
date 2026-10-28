@@ -23,7 +23,17 @@ export default defineConfig({
                   .documentId('heroSettingsDocument')
               ),
 
-            // 2. Fotos Oficiales de Servicios - Acceso directo único
+            // 2. Foto Sección Sobre Nosotros / Equipo - Acceso directo único
+            S.listItem()
+              .title('👥 Foto Sobre Nosotros (About)')
+              .id('aboutSettingsSingleton')
+              .child(
+                S.document()
+                  .schemaType('aboutSettings')
+                  .documentId('aboutSettingsDocument')
+              ),
+
+            // 3. Fotos Oficiales de Servicios - Acceso directo único
             S.listItem()
               .title('🛠️ Fotos de Servicios Principales')
               .id('serviceImagesSingleton')
@@ -33,7 +43,7 @@ export default defineConfig({
                   .documentId('serviceImagesDocument')
               ),
 
-            // 3. Galería de Trabajos en Carretera (múltiples fotos)
+            // 4. Galería de Trabajos en Carretera (múltiples fotos)
             S.documentTypeListItem('gallery').title('📸 Fotos de Trabajos (Galería)'),
           ]),
     }),
@@ -57,6 +67,30 @@ export default defineConfig({
             name: 'image',
             title: 'Foto Principal de Portada',
             description: 'Sube la foto horizontal (16:9). El sistema la optimiza y recorta automáticamente para teléfonos.',
+            type: 'image',
+            options: {
+              hotspot: true,
+            },
+          },
+        ],
+      },
+      {
+        name: 'aboutSettings',
+        title: 'Foto Sobre Nosotros',
+        type: 'document',
+        fields: [
+          {
+            name: 'title',
+            title: 'Identificador',
+            type: 'string',
+            initialValue: 'Foto Sección Sobre Nosotros',
+            readOnly: true,
+            hidden: true,
+          },
+          {
+            name: 'image',
+            title: 'Foto del Equipo / Sobre Nosotros',
+            description: 'Sube la foto del equipo o camión de servicio para la sección Nosotros. Cuenta con ajuste de punto focal (Hotspot).',
             type: 'image',
             options: {
               hotspot: true,
