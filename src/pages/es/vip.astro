@@ -1,10 +1,19 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import business from "@/data/business";
+import site from "@/config/site";
+
+const lang = "es";
+const canonicalUrl = `${site.url}/es/vip/`;
+const alternateUrl = `${site.url}/en/vip/`;
 ---
 
-<Layout
-  title="Membresía VIP Roadside | GY Roadside Solutions DFW"
+<BaseLayout
+  title={`Membresía VIP Roadside | ${business.name}`}
   description="Asistencia en carretera prioritaria 24/7 y tarifas blindadas para camioneros y flotas en Dallas-Fort Worth."
+  lang={lang}
+  canonicalUrl={canonicalUrl}
+  alternateUrl={alternateUrl}
 >
   <main class="min-h-screen bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-5xl mx-auto text-center mb-12">
@@ -53,10 +62,10 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <a
-          href="tel:+12143027757"
+          href={`tel:${business.phone}`}
           class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-md block text-base"
         >
-          Activar Plan Individual al (214) 302-7757
+          Activar Plan Individual al {business.phoneDisplay}
         </a>
       </div>
 
@@ -99,22 +108,22 @@ import Layout from "../../layouts/Layout.astro";
         </div>
 
         <a
-          href="tel:+12143027757"
+          href={`tel:${business.phone}`}
           class="w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-md block text-base"
         >
-          Activar Plan Flota al (214) 302-7757
+          Activar Plan Flota al {business.phoneDisplay}
         </a>
       </div>
 
     </div>
 
-    <!-- Soporte y Términos -->
+    <!-- Términos y contacto -->
     <div class="max-w-3xl mx-auto text-center mt-12 text-slate-400 text-sm">
-      <p>Sin contratos de permanencia obligatoria. Activación inmediata con tu primera llamada.</p>
+      <p>Sin contratos de permanencia forzosa. Activación telefónica inmediata.</p>
       <p class="mt-2">
         ¿Tienes más de 5 unidades? Llámanos para un paquete personalizado al 
-        <a href="tel:+12143027757" class="text-blue-400 font-semibold underline">(214) 302-7757</a>.
+        <a href={`tel:${business.phone}`} class="text-blue-400 font-semibold underline">{business.phoneDisplay}</a>.
       </p>
     </div>
   </main>
-</Layout>
+</BaseLayout>
