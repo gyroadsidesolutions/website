@@ -10,33 +10,59 @@ const gaId = site.analytics.gaId;
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
     <script is:inline define:vars={{ gaId }}>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
+      window.gtag = function () {
         dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", gaId, {
+      };
+      window.gtag("js", new Date());
+      window.gtag("config", gaId, {
         send_page_view: true,
       });
 
-      // Detector blindado de llamadas telefónicas con transport beacon
-      document.addEventListener("click", function (event) {
-        const phoneLink = event.target.closest('a[href^="tel:"]');
-        if (phoneLink) {
-          const phoneNumber = phoneLink.getAttribute("href");
-          
-          gtag("event", "click_to_call", {
-            event_category: "Engagement",
-            event_label: phoneNumber,
-            transport_type: "beacon",
-            value: 1,
-          });
-          gtag("event", "generate_lead", {
-            currency: "USD",
-            transport_type: "beacon",
-            value: 1,
-          });
-        }
-      });
+      // Detector universal de clics para llamadas y botones
+      document.addEventListener(
+        "click",
+        function (event) {
+          var el = event.target;
+          if (!el) return;
+
+          // Identifica si se pulsó un botón o enlace (incluso si se tocó el icono interno)
+          var clickable = el.closest ? el.closest("a, button") : null;
+          if (!clickable) return;
+
+          var href = clickable.getAttribute("href") || "";
+          var text = (clickable.innerText || clickable.textContent || "").trim().slice(0, 40);
+
+          // Caso 1: Clic en llamada telefónica (Llamar Ahora / Preventa)
+          if (href.startsWith("tel:") || clickable.matches('a[href^="tel:"]')) {
+            window.gtag("event", "click_to_call", {
+              event_category: "Conversion",
+              event_label: href,
+              transport_type: "beacon",
+              value: 1,
+            });
+
+            window.gtag("event", "generate_lead", {
+              currency: "USD",
+              transport_type: "beacon",
+              value: 1,
+            });
+          }
+          // Caso 2: Clic en los otros botones (Solicitar Asistencia, Contacto, Servicios)
+          else if (
+            clickable.matches(".btn-primary, .btn-outline-dark, button, a.btn") ||
+            href.includes("contacto") ||
+            href.includes("contact")
+          ) {
+            window.gtag("event", "cta_click", {
+              event_category: "Engagement",
+              event_label: text || href,
+              transport_type: "beacon",
+              value: 1,
+            });
+          }
+        },
+        true // Modo captura: procesa el evento antes de que el navegador cambie de pantalla
+      );
     </script>
   </>
 )}
