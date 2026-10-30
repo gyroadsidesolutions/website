@@ -9,121 +9,235 @@ const alternateUrl = `${site.url}/en/vip/`;
 ---
 
 <BaseLayout
-  title={`Membresía VIP Roadside | ${business.name}`}
-  description="Asistencia en carretera prioritaria 24/7 y tarifas blindadas para camioneros y flotas en Dallas-Fort Worth."
+  title={`Membresías VIP de Asistencia en Carretera | ${business.name}`}
+  description="Planes de cobertura preventiva y despacho prioritario 24/7 en Dallas-Fort Worth para camiones comerciales y flotas con tarifas blindadas."
   lang={lang}
   canonicalUrl={canonicalUrl}
   alternateUrl={alternateUrl}
 >
   <main class="min-h-screen bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto text-center mb-12">
-      <span class="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest bg-blue-600 text-white uppercase mb-4">
-        Cobertura Dallas-Fort Worth 24/7
+    <div class="max-w-6xl mx-auto text-center mb-14">
+      <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase mb-4">
+        Contratos Anuales de Mantenimiento Preventivo y Auxilio Vial
       </span>
       <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-        Membresía VIP de Asistencia en Carretera
+        Planes de Membresía VIP Comercial
       </h1>
-      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
-        Protección garantizada contra paradas no programadas en todo el corredor DFW. Despacho preferencial en menos de 45 minutos y costos congelados.
+      <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto">
+        Protección operativa contra tiempos muertos en Dallas-Fort Worth. Despacho preferencial 24/7, mano de obra programada incluida y descuentos contractuales sin recargos abusivos.
       </p>
     </div>
 
-    <!-- Planes de Membresía -->
-    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+    <!-- Rejilla de los 3 Planes -->
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-16">
       
-      <!-- Plan 1: Operador Independiente -->
-      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-8 flex flex-col justify-between shadow-xl">
+      <!-- Plan 1: GY Básica -->
+      <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
         <div>
-          <h2 class="text-2xl font-bold text-white mb-2">Operador Independiente</h2>
-          <p class="text-slate-400 text-sm mb-6">Diseñado para transportistas con 1 camión comercial.</p>
+          <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Operador Individual</span>
+          <h2 class="text-2xl font-bold text-white mt-1 mb-2">GY Básica</h2>
+          <p class="text-slate-400 text-xs mb-6">Mantenimiento preventivo esencial para 1 camión comercial.</p>
+          
           <div class="flex items-baseline mb-6">
-            <span class="text-5xl font-extrabold text-white">$49</span>
-            <span class="text-slate-400 ml-2">/ mes</span>
+            <span class="text-4xl sm:text-5xl font-black text-white">$99</span>
+            <span class="text-slate-400 text-sm ml-2 font-medium">/ mes</span>
+          </div>
+          <p class="text-[11px] text-amber-400/90 font-medium -mt-4 mb-6">*Contrato anual obligatorio de 12 meses</p>
+
+          <div class="border-t border-slate-700/80 pt-4 mb-6">
+            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Mano de Obra Incluida al Año:</p>
+            <ul class="space-y-3 text-slate-300 text-xs">
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>2 cambios de aceite y filtros de motor</strong> (mano de obra; intervalo mínimo de 3 meses).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>Mano de obra de frenos</strong> en hasta 2 extremos de rueda (1 eje).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>Mano de obra de montaje</strong> de hasta 2 neumáticos comerciales.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>1 limpieza y desinfección exterior básica</strong> de reefer (*wash-out*).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>10% desc. en mano de obra</strong> de mant. general reefer (activo tras 5 meses).</span>
+              </li>
+            </ul>
           </div>
 
-          <ul class="space-y-4 text-slate-300 text-sm mb-8">
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>Despacho prioritario &lt; 45 min</strong> en Dallas-Fort Worth.</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>2 asistencias menores incluidas al año</strong> (paso de corriente 24V, combustible de emergencia o recarga de aire).</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>15% de descuento</strong> en mano de obra de mecánica móvil.</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span>Radio de cobertura de 45 millas (I-35, I-20, I-30, I-635, US-75).</span>
-            </li>
-          </ul>
+          <div class="border-t border-slate-700/80 pt-4 mb-6">
+            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Beneficios Adicionales:</p>
+            <ul class="space-y-2 text-slate-400 text-xs">
+              <li>• 10% descuento en repuestos provistos por GY.</li>
+              <li>• 10% descuento en cargo de millaje de traslado.</li>
+              <li>• 5% descuento en mano de obra fuera de cobertura.</li>
+            </ul>
+          </div>
         </div>
 
         <a
           href={`tel:${business.phone}`}
-          class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-md block text-base"
+          class="w-full text-center bg-slate-700 hover:bg-slate-600 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
         >
-          Activar Plan Individual al {business.phoneDisplay}
+          Contratar GY Básica al {business.phoneDisplay}
         </a>
       </div>
 
-      <!-- Plan 2: Flota Pequeña -->
-      <div class="bg-slate-800 border-2 border-blue-500 rounded-2xl p-8 flex flex-col justify-between shadow-2xl relative">
-        <div class="absolute -top-3.5 right-6 bg-blue-500 text-white text-xs font-bold py-1 px-3 rounded-full uppercase tracking-wider">
-          Flotas
+      <!-- Plan 2: GY Plus -->
+      <div class="bg-slate-800 border-2 border-blue-500 rounded-2xl p-7 flex flex-col justify-between shadow-2xl relative">
+        <div class="absolute -top-3.5 right-6 bg-blue-600 text-white text-[11px] font-bold py-1 px-3 rounded-full uppercase tracking-wider shadow">
+          Más Popular
         </div>
 
         <div>
-          <h2 class="text-2xl font-bold text-white mb-2">Pequeña Flota</h2>
-          <p class="text-slate-400 text-sm mb-6">Para empresas y operadores de 2 a 5 camiones.</p>
+          <span class="text-xs font-bold tracking-wider text-blue-400 uppercase">Cargas Refrigeradas</span>
+          <h2 class="text-2xl font-bold text-white mt-1 mb-2">GY Plus</h2>
+          <p class="text-slate-400 text-xs mb-6">Protección continua para tractocamión y unidad reefer.</p>
+          
           <div class="flex items-baseline mb-6">
-            <span class="text-5xl font-extrabold text-white">$129</span>
-            <span class="text-slate-400 ml-2">/ mes</span>
+            <span class="text-4xl sm:text-5xl font-black text-white">$169</span>
+            <span class="text-slate-400 text-sm ml-2 font-medium">/ mes</span>
+          </div>
+          <p class="text-[11px] text-amber-400/90 font-medium -mt-4 mb-6">*Contrato anual obligatorio de 12 meses</p>
+
+          <div class="border-t border-slate-700/80 pt-4 mb-6">
+            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Mano de Obra Incluida al Año:</p>
+            <ul class="space-y-3 text-slate-300 text-xs">
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>2 cambios de aceite de motor</strong> (1° al 100% cubierto; 2° con 20% de descuento en mano de obra).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>Mano de obra de frenos</strong> en hasta 2 extremos de rueda (1 eje).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>Mano de obra de montaje</strong> de hasta 2 neumáticos comerciales.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>1 limpieza y desinfección exterior básica</strong> de reefer.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>1 inspección visual/operativa de reefer</strong> sin costo de labor.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>20% desc. en mano de obra</strong> de mant. general reefer (tras 5 meses).</span>
+              </li>
+            </ul>
           </div>
 
-          <ul class="space-y-4 text-slate-300 text-sm mb-8">
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>Línea exclusiva directa 24/7</strong> para despachos de la flota.</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>4 asistencias menores incluidas al año</strong> por cuenta.</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>1 diagnóstico computarizado móvil sin costo</strong> al año.</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span><strong>20% de descuento</strong> en servicio de grúa pesada.</span>
-            </li>
-            <li class="flex items-start">
-              <span class="text-blue-400 font-bold mr-3">✓</span>
-              <span>Cobertura prioritaria en patios logísticos de DFW, Arlington y Alliance.</span>
-            </li>
-          </ul>
+          <div class="border-t border-slate-700/80 pt-4 mb-6">
+            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Beneficios Adicionales:</p>
+            <ul class="space-y-2 text-slate-400 text-xs">
+              <li>• 15% descuento en repuestos provistos por GY.</li>
+              <li>• 20% descuento en cargo de millaje de traslado.</li>
+              <li>• 10% descuento en mano de obra fuera de cobertura.</li>
+            </ul>
+          </div>
         </div>
 
         <a
           href={`tel:${business.phone}`}
-          class="w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3.5 px-6 rounded-xl transition duration-200 shadow-md block text-base"
+          class="w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
         >
-          Activar Plan Flota al {business.phoneDisplay}
+          Contratar GY Plus al {business.phoneDisplay}
+        </a>
+      </div>
+
+      <!-- Plan 3: GY Premium -->
+      <div class="bg-slate-800/90 border border-amber-500/40 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+        <div>
+          <span class="text-xs font-bold tracking-wider text-amber-400 uppercase">Flotas y Carga Crítica</span>
+          <h2 class="text-2xl font-bold text-white mt-1 mb-2">GY Premium</h2>
+          <p class="text-slate-400 text-xs mb-6">Cobertura integral de máxima prioridad operativa.</p>
+          
+          <div class="flex items-baseline mb-6">
+            <span class="text-4xl sm:text-5xl font-black text-white">$199</span>
+            <span class="text-slate-400 text-sm ml-2 font-medium">/ mes</span>
+          </div>
+          <p class="text-[11px] text-amber-400/90 font-medium -mt-4 mb-6">*Contrato anual obligatorio de 12 meses</p>
+
+          <div class="border-t border-slate-700/80 pt-4 mb-6">
+            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Mano de Obra Incluida al Año:</p>
+            <ul class="space-y-3 text-slate-300 text-xs">
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>2 cambios de aceite de motor</strong> (1° al 100% cubierto; 2° con 30% de descuento en mano de obra).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>Mano de obra de frenos</strong> en hasta 2 extremos de rueda (1 eje).</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>Mano de obra de montaje</strong> de hasta 2 neumáticos comerciales.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>2 limpiezas y desinfecciones básicas</strong> de reefer.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>2 inspecciones operativas de reefer</strong> sin costo de labor.</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-emerald-400 font-bold mr-2">✓</span>
+                <span><strong>25% desc. en mano de obra</strong> de mant. general reefer (tras 5 meses).</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="border-t border-slate-700/80 pt-4 mb-6">
+            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Beneficios Adicionales:</p>
+            <ul class="space-y-2 text-slate-400 text-xs">
+              <li>• 20% descuento en repuestos provistos por GY.</li>
+              <li>• 25% descuento en cargo de millaje de traslado.</li>
+              <li>• 15% descuento en mano de obra fuera de cobertura.</li>
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={`tel:${business.phone}`}
+          class="w-full text-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
+        >
+          Contratar GY Premium al {business.phoneDisplay}
         </a>
       </div>
 
     </div>
 
-    <!-- Soporte -->
-    <div class="max-w-3xl mx-auto text-center mt-12 text-slate-400 text-sm">
-      <p>Sin contratos de permanencia obligatoria. Activación inmediata con tu primera llamada.</p>
-      <p class="mt-2">
-        ¿Tienes más de 5 unidades? Llámanos para un paquete personalizado al 
-        <a href={`tel:${business.phone}`} class="text-blue-400 font-semibold underline">{business.phoneDisplay}</a>.
-      </p>
+    <!-- Términos Contractuales y Blindaje Legal en Pantalla -->
+    <div class="max-w-5xl mx-auto bg-slate-950/80 border border-slate-800 rounded-2xl p-6 sm:p-8 text-slate-400 text-xs leading-relaxed">
+      <h3 class="text-white text-sm font-bold uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
+        Términos Operativos y Condiciones Generales de las Membresías
+      </h3>
+      <div class="space-y-3">
+        <p>
+          <strong class="text-slate-200">1. Alcance Exclusivo de Mano de Obra:</strong> Las membresías cubren únicamente los honorarios profesionales técnicos (*labor-only*). Las piezas, zapatas, tambores, neumáticos, lubricantes, refrigerantes, filtros y materiales necesarios para la ejecución de los servicios serán facturados por separado, aplicando el descuento correspondiente al plan activo.
+        </p>
+        <p>
+          <strong class="text-slate-200">2. Exclusión por Repuestos del Cliente:</strong> Si el Miembro suministra sus propios componentes, el beneficio se limitará a la mano de obra. GY Roadside Solutions LLC no otorga garantías sobre piezas suministradas por terceros ni asume responsabilidad por accidentes, demoras o daños mecánicos resultantes del colapso de dichos materiales.
+        </p>
+        <p>
+          <strong class="text-slate-200">3. Permanencia Contractual:</strong> Los planes requieren un contrato forzoso de doce (12) meses. La cancelación anticipada requiere abonar la diferencia a tarifa regular de los servicios y descuentos utilizados o el saldo pendiente estipulado en el acuerdo formal.
+        </p>
+        <p>
+          <strong class="text-slate-200">4. Mantenimiento de Unidad Reefer y Ley EPA:</strong> El mantenimiento preventivo comprende exclusivamente mano de obra para cambio de aceite/filtros de la unidad de frío, cambio de correas e inspección operativa de presiones. En estricto apego a la Sección 608 de la Ley de Aire Limpio (EPA Clean Air Act), no se recargará gas refrigerante en sistemas con fugas no reparadas. Reparaciones mayores y soldaduras se cotizan por separado.
+        </p>
+        <p>
+          <strong class="text-slate-200">5. Límite de Responsabilidad Civil:</strong> GY Roadside Solutions LLC queda exenta de toda responsabilidad por reclamos por lucro cesante, descomposición de mercancía perecedera, pérdida de cargas, multas del DOT o tiempos de espera imputables a fuerza mayor o tráfico carretero.
+        </p>
+      </div>
     </div>
   </main>
 </BaseLayout>
