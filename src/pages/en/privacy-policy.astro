@@ -8,9 +8,8 @@ const lang = "en";
 const canonicalUrl = `${site.url}/en/privacy-policy/`;
 const alternateUrl = `${site.url}/es/politica-de-privacidad/`;
 
-// Fixed effective date — do NOT derive from the build date. Update this string
-// only when the policy text actually changes (and re-publish).
-const LAST_UPDATED = "October 25, 2026";
+// Fixed effective date — updated with GA4 and VIP Membership disclosures
+const LAST_UPDATED = "October 29, 2026";
 
 // Mailing address used for legal / privacy notices (CAN-SPAM §316 requirement).
 const mailingAddress = `${business.address}, ${business.city}, ${business.state} ${business.zipCode}, ${business.country}`;
@@ -18,7 +17,7 @@ const mailingAddress = `${business.address}, ${business.city}, ${business.state}
 
 <BaseLayout
   title={`Privacy Policy — ${business.name}`}
-  description="Privacy Policy for the GY Roadside Solutions LLC website: what data we collect, how we use it, your California and other state privacy rights, data retention, and how to contact us."
+  description="Privacy Policy for GY Roadside Solutions LLC: data collection, Google Analytics 4 tracking cookies, VIP membership processing, Texas consumer rights, and contact details."
   lang={lang}
   canonicalUrl={canonicalUrl}
   alternateUrl={alternateUrl}
@@ -37,178 +36,151 @@ const mailingAddress = `${business.address}, ${business.city}, ${business.state}
           <p>
             This Privacy Policy explains how {business.name} ("we", "us", or "our")
             collects, uses, discloses, and safeguards your information when you visit
-            our website ({site.url}) (the "Site") or request our roadside-assistance
-            services. By using the Site, you agree to the practices described here. If
-            you do not agree, please do not use the Site.
+            our website ({site.url}) (the "Site"), enroll in our membership programs, or request
+            our commercial mobile roadside assistance services. By using the Site, you agree
+            to the practices described here. If you do not agree, please do not use the Site.
           </p>
           <p>
-            We are the data controller for the information described in this policy.
-            Our contact details are listed in Section 13.
+            {business.name} acts as the data controller for the personal information described
+            in this policy. Our corporate and legal contact details are listed in Section 14.
           </p>
         </section>
 
         <section>
           <h2 class="text-primary">2. Information We Collect</h2>
-          <p>We collect only the information needed to respond to your service request and to operate the Site:</p>
+          <p>We collect only the information necessary to fulfill roadside dispatch requests, manage commercial memberships, and operate the Site:</p>
           <ul class="list-disc pl-6 space-y-1">
-            <li><strong>Information you provide us.</strong> When you use the contact form or call us, you may give us your name, phone number, email address, current location, service requested, truck/vehicle details, and a description of the problem.</li>
-            <li><strong>Communications.</strong> Records of the calls, texts, or emails we exchange with you to coordinate assistance.</li>
-            <li><strong>Automatically collected information.</strong> Basic technical data such as device/browser type and the page you came from, only to the extent any analytics tool is enabled. Analytics tools are currently disabled on this Site (see Section 6).</li>
+            <li><strong>Directly Provided Information:</strong> When you complete our contact form, call our dispatch line, or enroll in a VIP membership, we collect your name, commercial fleet or business name, telephone number, email address, physical roadside location (highway mile markers, cross streets, GPS coordinates across DFW), vehicle specifications (axle configuration, engine type, reefer unit model), and issue descriptions.</li>
+            <li><strong>Membership &amp; Billing Records:</strong> For members of our GY Basic, GY Plus, and GY Premium plans, we maintain operational logs of utilized preventative maintenance labor, scheduled renewals, and billing records. We do not store complete payment card credentials on our servers (see Section 8).</li>
+            <li><strong>Dispatch Communications:</strong> Call records, dispatch notes, and SMS messages exchanged with your drivers or fleet managers to facilitate mobile mechanic arrivals.</li>
+            <li><strong>Technical &amp; Interaction Data:</strong> Through authorized analytics services, we collect device identifiers, screen resolutions, referrers, visited pages, and conversion events such as telephone link clicks (see Section 6).</li>
           </ul>
-          <p class="mt-3 text-sm text-muted">We do not collect sensitive personal information (such as Social Security numbers, financial account numbers, health, or biometric data) through the Site.</p>
         </section>
 
         <section>
           <h2 class="text-primary">3. How We Use Your Information</h2>
-          <p>We use your information to:</p>
+          <p>We use your information strictly for legitimate commercial and operational purposes:</p>
           <ul class="list-disc pl-6 space-y-1">
-            <li>Respond to and coordinate your roadside-assistance request.</li>
-            <li>Contact you by phone, text message, or email about the service you requested.</li>
-            <li>Maintain records of service requests for our own business and legal purposes.</li>
-            <li>Improve our services and website, and to comply with legal obligations, prevent fraud, and enforce our rights.</li>
+            <li>Dispatching mobile roadside technicians, tire trucks, and heavy-duty towing units across the Dallas-Fort Worth metro area.</li>
+            <li>Verifying membership status and executing contractually agreed labor and parts discounts.</li>
+            <li>Communicating with drivers or fleet dispatchers regarding estimated arrival times (ETAs) and repair authorizations.</li>
+            <li>Processing recurring monthly subscription fees established under mandatory 12-month annual service agreements.</li>
+            <li>Maintaining regulatory compliance, including EPA Section 608 refrigeration recovery tracking and Texas commercial records.</li>
           </ul>
-          <p class="mt-3">We do <strong>not</strong> sell your personal information, and we do <strong>not</strong> share it with third parties for their marketing.</p>
+          <p class="mt-3">
+            We do <strong>not</strong> sell, rent, or trade your personal information with external advertising networks or commercial data brokers.
+          </p>
         </section>
 
         <section>
           <h2 class="text-primary">4. Phone &amp; Text Message Consent (TCPA)</h2>
           <p>
-            If you provide a phone number, you consent to be contacted at that number
-            by phone call and/or SMS/text message for the purpose of coordinating the
-            service you request. Message and data rates may apply. Consent is not a
-            condition of purchase. You may withdraw this consent at any time by
-            replying "STOP" to a text or by contacting us using the details in
-            Section 13. We do not use your number for automated marketing without
-            your separate consent.
+            By clicking our click-to-call telephone links (<code class="text-xs bg-slate-100 p-1 rounded">tel:</code>) or submitting your phone number via online forms, you expressly consent to receive operational phone calls and SMS/text messages from our dispatch team and field mechanics regarding your roadside emergency or membership enrollment, pursuant to the Telephone Consumer Protection Act (TCPA).
           </p>
           <p>
-            When you submit a request through our contact form we ask for this consent
-            separately from the privacy acknowledgment, and we record the date and the
-            policy version you accepted, so you can prove what you agreed to.
+            Standard message and data rates may apply. We never employ autodialed marketing robocalls without separate prior written consent. You may withdraw SMS consent at any time by replying "STOP" to any message or by contacting us under Section 14.
           </p>
         </section>
 
         <section>
-          <h2 class="text-primary">5. How We Share Information</h2>
+          <h2 class="text-primary">5. VIP Memberships &amp; Recurring Service Contracts</h2>
           <p>
-            We share information only with trusted service providers who help us
-            operate the Site and respond to requests (for example, the form-delivery
-            service described in Section 8, and hosting/email providers). These
-            providers may process your information only to perform services for us and
-            are expected to keep it confidential. We may also disclose information if
-            required by law, to respond to a valid legal process, or to protect our
-            rights, safety, or property.
+            Enrollment in the GY Basic ($99/mo), GY Plus ($169/mo), or GY Premium ($199/mo) plans is governed by a mandatory 12-month service contract. Account data is maintained to track annual labor allocations (oil changes, brake service labor, tire mounts, and reefer maintenance) and bill monthly installments.
+          </p>
+          <p>
+            Technical vehicle data provided by members is kept on file to audit contract discounts and document customer-supplied parts liability waivers.
           </p>
         </section>
 
         <section>
-          <h2 class="text-primary">6. Cookies &amp; Analytics</h2>
+          <h2 class="text-primary">6. Cookies &amp; Google Analytics 4 (GA4)</h2>
           <p>
-            This Site does not use advertising or tracking cookies by default.
-            If analytics tools (such as Google Analytics or Google Tag Manager) are
-            later enabled, they may set cookies to help us understand site usage.
-            Analytics are only active when a valid tracking ID is configured, and IP
-            anonymization is used where supported. If analytics are enabled, this
-            Site's cookie notice will be updated accordingly. Most browsers let you
-            refuse cookies through their settings.
+            This Site utilizes <strong>Google Analytics 4 (GA4)</strong>, a web analytics service provided by Google LLC, to measure website performance, user traffic, and conversion milestones. GA4 uses first-party cookies and pseudonymous identifiers to track interactions, including page views and conversion events such as telephone call button clicks (<code>click_to_call</code>) and service requests (<code>generate_lead</code>).
+          </p>
+          <p>
+            IP addresses are processed automatically by Google to approximate city-level geographic data and are discarded immediately without persistent storage. Data is transmitted securely using background beacon protocols (<code class="text-xs bg-slate-100 p-1 rounded">transport_type: "beacon"</code>).
+          </p>
+          <p>
+            You can prevent Google Analytics from recognizing your return visits by disabling cookies in your browser or by installing the official 
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Google Analytics Opt-out Browser Add-on</a>.
           </p>
         </section>
 
         <section>
-          <h2 class="text-primary">7. Data Retention</h2>
+          <h2 class="text-primary">7. Information Sharing &amp; Third Parties</h2>
           <p>
-            We keep contact-form submissions and related communications only as long
-            as necessary to provide the service, resolve disputes, meet legal, tax and
-            accounting requirements, and otherwise operate our business — generally no
-            longer than what is needed to service a request and maintain business
-            records. You may ask us to delete your information (see Section 9).
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">8. Third-Party Services &amp; Links</h2>
-          <p>
-            Our contact form is processed by Web3Forms. Please review
-            <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Web3Forms' Privacy Policy</a>
-            to understand how it handles form data. The Site may also link to Google
-            Maps, Google Business Profile, Facebook, Instagram, and TikTok. Those
-            services have their own privacy policies, we are not responsible for their
-            practices, and this policy applies only to information we collect.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">9. Your California &amp; Other State Privacy Rights</h2>
-          <p>
-            If you are a resident of California, Colorado, Connecticut, Texas, Virginia,
-            or another U.S. state with a comprehensive consumer-privacy law, you may
-            have the following rights regarding personal information we hold about you.
-            We do not "sell" or "share" personal information as those terms are defined
-            by the California Consumer Privacy Act (CCPA/CPRA) or other state laws.
+            We disclose information only to vetted operational service providers bound by strict confidentiality requirements:
           </p>
           <ul class="list-disc pl-6 space-y-1">
-            <li><strong>Right to know</strong> the categories, sources, purposes, and recipients of personal information we collect.</li>
-            <li><strong>Right to access</strong> a copy of the personal information we hold about you.</li>
-            <li><strong>Right to deletion</strong> of personal information we collected from you (subject to legal exceptions).</li>
-            <li><strong>Right to correction</strong> of inaccurate personal information.</li>
-            <li><strong>Right to opt out</strong> of the sale or sharing of personal information (we do not sell or share it) and of automated profiling for decisions about you.</li>
-            <li><strong>Right to be free from discrimination</strong> for exercising these rights.</li>
+            <li><strong>Contact Form Routing:</strong> Web3Forms, for secure end-to-end encrypted dispatch notification routing (<a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Web3Forms Privacy Policy</a>).</li>
+            <li><strong>Cloud Hosting &amp; Infrastructure:</strong> Netlify / GitHub Pages for secure web content delivery.</li>
+            <li><strong>Web Analytics:</strong> Google LLC (Google Analytics 4).</li>
           </ul>
           <p class="mt-3">
-            To exercise a right, use the contact details in Section 13 or email us with
-            the subject line "Privacy Request". We may need to verify your identity
-            before fulfilling a request. You may use an authorized agent; we may ask for
-            proof of that authorization. We will respond within the timeframe required by
-            applicable law (generally 45 days, extendable once by 45 days).
-          </p>
-          <div class="rounded-lg bg-light border border-border p-4 text-sm">
-            <strong>Categories of personal information collected in the last 12 months:</strong>
-            identifiers (name, phone, email), geolocation (current location you provide),
-            commercial information (service requested, vehicle details), and internet/usage
-            activity (only if analytics is enabled). We do not collect sensitive personal
-            information. This information is collected directly from you and used for the
-            business purposes in Sections 3–4.
-          </div>
-        </section>
-
-        <section>
-          <h2 class="text-primary">10. Children's Privacy</h2>
-          <p>
-            The Site is not directed to children under 16, and we do not knowingly
-            collect personal information from children. If you believe a child has
-            provided us information, contact us so we can delete it.
+            We may disclose information where required by law, valid legal process, Department of Transportation (DOT) compliance audits, or to protect the safety of roadside technicians operating on active freight corridors.
           </p>
         </section>
 
         <section>
-          <h2 class="text-primary">11. Data Security</h2>
+          <h2 class="text-primary">8. Payment Processing &amp; Financial Security (PCI-DSS)</h2>
           <p>
-            We take reasonable administrative, technical, and organizational measures
-            to protect your information. However, no method of transmission over the
-            Internet or electronic storage is completely secure, and we cannot guarantee
-            absolute security.
+            Recurring membership fees and mobile roadside payments are processed exclusively through certified Level 1 <strong>PCI-DSS compliant</strong> merchant gateways. {business.name} <strong>never receives, processes, or stores full payment card numbers, CVV codes, or bank login credentials</strong> on this Site's infrastructure.
           </p>
         </section>
 
         <section>
-          <h2 class="text-primary">12. Changes &amp; Governing Law</h2>
+          <h2 class="text-primary">9. Data Retention</h2>
           <p>
-            We may update this Privacy Policy from time to time. Material changes will
-            be posted on this page with an updated "Last Updated" date. This policy is
-            governed by the laws of the State of Texas, U.S.A., without regard to
-            conflict-of-law rules.
+            We retain contact submissions, roadside repair logs, and billing invoices for as long as necessary to complete service delivery, address mechanical warranty inquiries, comply with Texas commercial tax recordkeeping standards (typically 4 to 7 years), and enforce our 12-month membership contracts.
           </p>
         </section>
 
         <section>
-          <h2 class="text-primary">13. Contact Us</h2>
+          <h2 class="text-primary">10. State Privacy Rights (Texas TDPSA, CCPA &amp; Others)</h2>
           <p>
-            If you have questions about this Privacy Policy or wish to exercise a privacy
-            right, contact us at:<br />
-            <strong>{business.name}</strong><br />
+            Under the <strong>Texas Data Privacy and Security Act (TDPSA)</strong> and comparable state frameworks (including California's CCPA/CPRA), commercial drivers and fleet operators possess specific privacy rights:
+          </p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li><strong>Right to Know &amp; Access:</strong> Confirm whether we process your personal data and access a portable copy.</li>
+            <li><strong>Right to Correct:</strong> Request correction of inaccurate fleet, contact, or billing records.</li>
+            <li><strong>Right to Delete:</strong> Request deletion of personal information, subject to statutory tax and commercial contract exemptions.</li>
+            <li><strong>Right to Non-Discrimination:</strong> Receive equal roadside service and commercial terms regardless of privacy right requests.</li>
+            <li><strong>Right to Opt-Out:</strong> Opt out of the sale of personal data or targeted profiling. We expressly do not sell personal data or engage in automated consumer profiling.</li>
+          </ul>
+          <p class="mt-3">
+            To submit a privacy inquiry, email our compliance team with the subject line "Privacy Rights Request" via the channels in Section 14. Requests are fulfilled within statutory deadlines (within 45 days).
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">11. Children's Privacy</h2>
+          <p>
+            Our commercial roadside services are exclusively marketed to professional drivers and fleet managers aged 18 and older. We do not knowingly solicit or collect data from individuals under 16 years of age.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">12. Data Security</h2>
+          <p>
+            We maintain technical, administrative, and physical safeguards designed to protect personal and vehicle data. These include full site Transport Layer Security (HTTPS/TLS encryption) and restricted dispatch dashboard access controls.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">13. Policy Updates &amp; Governing Law</h2>
+          <p>
+            We reserve the right to revise this Privacy Policy periodically. Substantive updates will be published with an updated "Last Updated" timestamp. This policy is governed under the laws of the State of Texas, without regard to conflict-of-law principles.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">14. Contact Us</h2>
+          <p>
+            For legal inquiries, privacy requests, or questions regarding our operational data practices, contact us at:<br />
+            <strong class="text-base text-primary block mt-2">{business.name}</strong>
             {mailingAddress}<br />
-            <a href={`mailto:${business.email}`} class="text-primary hover:underline">{business.email}</a><br />
-            <a href={`tel:${business.phone}`} class="text-primary hover:underline">{business.phoneDisplay}</a>
+            Email: <a href={`mailto:${business.email}`} class="text-primary hover:underline font-semibold">{business.email}</a><br />
+            Phone: <a href={`tel:${business.phone}`} class="text-primary hover:underline font-semibold">{business.phoneDisplay}</a>
           </p>
         </section>
       </div>
