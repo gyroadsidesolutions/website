@@ -1,63 +1,74 @@
 ---
-interface Props {
-  lang: "es" | "en";
+import type { Lang } from "@/i18n/index";
+
+export interface Props {
+  lang: Lang;
 }
 
 const { lang } = Astro.props;
-
-const content = {
-  es: {
-    badge: "MEMBRESÍA DISPONIBLE",
-    title: "Membresía VIP Roadside para Camioneros y Flotas",
-    subtitle: "Evita gastos imprevistos de miles de dólares en carretera. Con nuestra suscripción mensual obtienes asistencia de emergencia prioritaria 24/7 y cobertura de servicios en Dallas-Fort Worth.",
-    benefit1: "Despacho prioritario de auxilio vial < 45 min",
-    benefit2: "Paso de corriente 24V, aire y asistencias menores incluidas",
-    benefit3: "Tarifas congeladas y descuentos en mecánica móvil y grúa",
-    cta: "Ver Planes y Precios VIP",
-  },
-  en: {
-    badge: "MEMBERSHIP AVAILABLE",
-    title: "VIP Roadside Membership for Owner-Operators & Fleets",
-    subtitle: "Protect your bottom line against unexpected high-dollar breakdowns. Get 24/7 priority emergency dispatch and coverage across Dallas-Fort Worth with a predictable monthly plan.",
-    benefit1: "Priority roadside dispatch under 45 minutes",
-    benefit2: "24V jump starts, compressed air & minor calls included",
-    benefit3: "Locked-in rates and discounts on mobile repair & towing",
-    cta: "View VIP Plans & Pricing",
-  },
-};
-
-const t = content[lang];
+const isEs = lang === "es";
+const vipUrl = isEs ? "/es/vip/" : "/en/vip/";
 ---
 
-<section class="py-12 bg-slate-900 border-y border-amber-500/20 text-white relative overflow-hidden">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-    <span class="inline-block py-1 px-3 rounded-full text-xs font-bold tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase mb-4">
-      {t.badge}
+<section class="py-12 px-4 sm:px-6 lg:px-8 bg-slate-900 border-y border-slate-800">
+  <div class="max-w-4xl mx-auto text-center">
+    <!-- Badge de estado On Hold -->
+    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-amber-500/20 text-amber-400 border border-amber-500/40 uppercase mb-4">
+      {isEs ? "PRÓXIMAMENTE — EN REVISIÓN OPERATIVA" : "COMING SOON — UNDER OPERATIONAL REVIEW"}
     </span>
-    <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-      {t.title}
+
+    <!-- Título -->
+    <h2 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
+      {isEs 
+        ? "Membresía VIP Roadside para Camioneros y Flotas" 
+        : "VIP Roadside Membership for Fleets & Owner-Operators"}
     </h2>
-    <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-300 mb-8">
-      {t.subtitle}
+
+    <!-- Descripción -->
+    <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
+      {isEs
+        ? "Conoce nuestro próximo programa de mantenimiento preventivo y auxilio vial en Dallas-Fort Worth. Cobertura planificada para tractocamiones y unidades reefer con cupos limitados."
+        : "Explore our upcoming roadside and preventive maintenance program across Dallas-Fort Worth. Planned coverage for commercial tractors and reefer units with limited slots."}
     </p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-left max-w-3xl mx-auto mb-8">
-      <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-700">
-        <p class="text-amber-400 font-semibold text-sm">✓ {t.benefit1}</p>
+    <!-- Tarjetas de Beneficios Corregidas (Sin promesas de minutos) -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 text-left">
+      <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4">
+        <p class="text-amber-400 font-bold text-xs sm:text-sm mb-1">
+          ✓ {isEs ? "Prioridad de despacho 24/7" : "24/7 Priority Dispatch"}
+        </p>
+        <p class="text-slate-400 text-xs">
+          {isEs ? "Atención preferencial sujeta a disponibilidad y tráfico." : "Preferred queue handling subject to traffic conditions."}
+        </p>
       </div>
-      <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-700">
-        <p class="text-amber-400 font-semibold text-sm">✓ {t.benefit2}</p>
+
+      <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4">
+        <p class="text-amber-400 font-bold text-xs sm:text-sm mb-1">
+          ✓ {isEs ? "Cobertura en 3 ejes y reefer" : "3-Axle & Reefer Coverage"}
+        </p>
+        <p class="text-slate-400 text-xs">
+          {isEs ? "Mano de obra anual en frenos, neumáticos, motor y frío." : "Annual labor inclusions for brakes, tires, oil & reefer unit."}
+        </p>
       </div>
-      <div class="bg-slate-800/80 p-4 rounded-lg border border-slate-700">
-        <p class="text-amber-400 font-semibold text-sm">✓ {t.benefit3}</p>
+
+      <div class="bg-slate-800/80 border border-slate-700/80 rounded-xl p-4">
+        <p class="text-amber-400 font-bold text-xs sm:text-sm mb-1">
+          ✓ {isEs ? "Tarifas y piezas congeladas" : "Locked-In Commercial Rates"}
+        </p>
+        <p class="text-slate-400 text-xs">
+          {isEs ? "Descuentos contractuales en repuestos y millaje móvil." : "Fixed contract discounts on parts, labor, and dispatch mileage."}
+        </p>
       </div>
     </div>
 
-    <a
-      href={`/${lang}/vip/`}
-      class="inline-flex items-center justify-center font-bold px-8 py-4 rounded-xl text-slate-950 bg-amber-400 hover:bg-amber-300 transition duration-200 shadow-lg text-base sm:text-lg"
-    >
-      ⭐ {t.cta} →
-    </a>
+    <!-- Botón hacia /vip/ con aviso de Próximamente -->
+    <div class="inline-block">
+      <a
+        href={vipUrl}
+        class="inline-flex items-center justify-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-7 rounded-xl transition duration-200 shadow-lg text-sm sm:text-base"
+      >
+        <span>{isEs ? "Consultar Estructura de Planes (Próximamente) →" : "Preview Membership Plans (Coming Soon) →"}</span>
+      </a>
+    </div>
   </div>
 </section>
