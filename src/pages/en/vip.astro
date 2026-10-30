@@ -9,20 +9,33 @@ const alternateUrl = `${site.url}/es/vip/`;
 ---
 
 <BaseLayout
-  title={`Membership Plans | ${business.name}`}
-  description="Roadside assistance and preventive maintenance membership plans for commercial trucks and reefer units in Dallas-Fort Worth."
+  title={`Membership Plans (Coming Soon) | ${business.name}`}
+  description="Coming Soon: Roadside assistance and preventive maintenance membership plans for commercial trucks and reefer units in Dallas-Fort Worth."
   lang={lang}
   canonicalUrl={canonicalUrl}
   alternateUrl={alternateUrl}
 >
   <main class="min-h-screen bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-5xl mx-auto text-center mb-12">
-      <span class="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest bg-blue-600 text-white uppercase mb-4">
-        {business.name}
+    <div class="max-w-5xl mx-auto text-center mb-8">
+      <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-amber-500/20 text-amber-400 border border-amber-500/40 uppercase mb-4">
+        Coming Soon — Under Operational Review
       </span>
       <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
         MEMBERSHIP PLANS
       </h1>
+      <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto">
+        Review the preliminary structure of our commercial roadside and maintenance program for DFW drivers and fleets. Active enrollments will open following internal capacity reviews.
+      </p>
+    </div>
+
+    <!-- On Hold Notice Banner -->
+    <div class="max-w-4xl mx-auto mb-12 bg-amber-500/10 border border-amber-500/30 rounded-2xl p-5 text-center">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 text-amber-300 text-sm">
+        <span class="text-2xl">⏳</span>
+        <p class="font-medium">
+          <strong>Enrollment Currently Paused:</strong> Terms and service tiers below are under comprehensive cost-benefit analysis. You may read through all details; open registration dates will be announced shortly.
+        </p>
+      </div>
     </div>
 
     <!-- Promotional Blocks -->
@@ -53,9 +66,12 @@ const alternateUrl = `${site.url}/es/vip/`;
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-16">
       
       <!-- 1. GY Basic -->
-      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl opacity-95">
         <div>
-          <h2 class="text-2xl font-bold text-white mb-2">1. GY Basic</h2>
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-2xl font-bold text-white">1. GY Basic</h2>
+            <span class="text-[11px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300 py-1 px-2.5 rounded-full">Coming Soon</span>
+          </div>
           <div class="flex items-baseline mb-1">
             <span class="text-4xl font-extrabold text-white">Price: $99</span>
             <span class="text-slate-400 text-sm ml-2">/ month</span>
@@ -98,18 +114,18 @@ const alternateUrl = `${site.url}/es/vip/`;
           </div>
         </div>
 
-        <a
-          href={`tel:${business.phone}`}
-          class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
-        >
-          Call to Enroll in GY Basic
-        </a>
+        <div class="w-full text-center bg-slate-700/70 border border-slate-600 text-slate-300 font-semibold py-3.5 px-4 rounded-xl text-sm select-none">
+          🔒 Coming Soon
+        </div>
       </div>
 
       <!-- 2. GY Plus -->
-      <div class="bg-slate-800 border-2 border-blue-500 rounded-2xl p-7 flex flex-col justify-between shadow-2xl relative">
+      <div class="bg-slate-800 border-2 border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-2xl relative opacity-95">
         <div>
-          <h2 class="text-2xl font-bold text-white mb-2">2. GY Plus</h2>
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-2xl font-bold text-white">2. GY Plus</h2>
+            <span class="text-[11px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300 py-1 px-2.5 rounded-full">Coming Soon</span>
+          </div>
           <div class="flex items-baseline mb-1">
             <span class="text-4xl font-extrabold text-white">Price: $169</span>
             <span class="text-slate-400 text-sm ml-2">/ month</span>
@@ -156,18 +172,18 @@ const alternateUrl = `${site.url}/es/vip/`;
           </div>
         </div>
 
-        <a
-          href={`tel:${business.phone}`}
-          class="w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
-        >
-          Call to Enroll in GY Plus
-        </a>
+        <div class="w-full text-center bg-slate-700/70 border border-slate-600 text-slate-300 font-semibold py-3.5 px-4 rounded-xl text-sm select-none">
+          🔒 Coming Soon
+        </div>
       </div>
 
       <!-- 3. GY Premium -->
-      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl opacity-95">
         <div>
-          <h2 class="text-2xl font-bold text-white mb-2">3. GY Premium</h2>
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-2xl font-bold text-white">3. GY Premium</h2>
+            <span class="text-[11px] font-bold uppercase tracking-wider bg-slate-700 text-slate-300 py-1 px-2.5 rounded-full">Coming Soon</span>
+          </div>
           <div class="flex items-baseline mb-1">
             <span class="text-4xl font-extrabold text-white">Price: $199</span>
             <span class="text-slate-400 text-sm ml-2">/ month</span>
@@ -214,12 +230,9 @@ const alternateUrl = `${site.url}/es/vip/`;
           </div>
         </div>
 
-        <a
-          href={`tel:${business.phone}`}
-          class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
-        >
-          Call to Enroll in GY Premium
-        </a>
+        <div class="w-full text-center bg-slate-700/70 border border-slate-600 text-slate-300 font-semibold py-3.5 px-4 rounded-xl text-sm select-none">
+          🔒 Coming Soon
+        </div>
       </div>
 
     </div>
