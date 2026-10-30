@@ -8,18 +8,16 @@ const lang = "es";
 const canonicalUrl = `${site.url}/es/politica-de-privacidad/`;
 const alternateUrl = `${site.url}/en/privacy-policy/`;
 
-// Fecha fija de vigencia — NO derivarla de la fecha de build. Actualizar esta
-// cadena solo cuando cambie el texto de la política (y volver a publicar).
-const LAST_UPDATED = "25 de octubre de 2026";
+// Fecha fija de vigencia — actualizada con la integración de GA4 y membresías VIP
+const LAST_UPDATED = "29 de octubre de 2026";
 
-// Dirección postal para notificaciones legales / de privacidad
-// (requisito de CAN-SPAM §316).
+// Dirección postal para notificaciones legales / de privacidad (CAN-SPAM §316)
 const mailingAddress = `${business.address}, ${business.city}, ${business.state} ${business.zipCode}, ${business.country}`;
 ---
 
 <BaseLayout
   title={`Política de Privacidad — ${business.name}`}
-  description="Política de Privacidad del sitio web de GY Roadside Solutions LLC: qué datos recopilamos, cómo los usamos, sus derechos de privacidad de California y otros estados, retención de datos y cómo contactarnos."
+  description="Política de Privacidad de GY Roadside Solutions LLC: recopilación de datos, cookies analíticas de Google Analytics 4, procesamiento de membresías VIP, derechos de privacidad de Texas y contacto."
   lang={lang}
   canonicalUrl={canonicalUrl}
   alternateUrl={alternateUrl}
@@ -36,189 +34,161 @@ const mailingAddress = `${business.address}, ${business.city}, ${business.state}
         <section>
           <h2 class="text-primary">1. Introducción</h2>
           <p>
-            Esta Política de Privacidad explica cómo {business.name} ("nosotros")
-            recopila, usa, divulga y protege su información cuando visita nuestro
-            sitio web ({site.url}) (el "Sitio") o solicita nuestros servicios de
-            asistencia en carretera. Al usar el Sitio, usted acepta las prácticas
-            descritas en este documento. Si no está de acuerdo, por favor no utilice
-            el Sitio.
+            Esta Política de Privacidad explica cómo {business.name} ("nosotros", "nuestro")
+            recopila, utiliza, almacena y protege su información cuando visita nuestro
+            sitio web ({site.url}) (el "Sitio"), contrata nuestros planes de membresía o solicita
+            nuestros servicios de auxilio vial móvil para vehículos comerciales. Al utilizar el Sitio,
+            usted consiente las prácticas descritas en este documento.
           </p>
           <p>
-            Nosotros somos el responsable del tratamiento (data controller) de la
-            información descrita en esta política. Nuestros datos de contacto están
-            en la Sección 13.
+            {business.name} actúa como el responsable del tratamiento de los datos personales recopilados.
+            Nuestros datos de contacto legal y fiscal se detallan en la Sección 14.
           </p>
         </section>
 
         <section>
           <h2 class="text-primary">2. Información que Recopilamos</h2>
-          <p>Recopilamos únicamente la información necesaria para responder a su solicitud de servicio y operar el Sitio:</p>
+          <p>Recopilamos la información estrictamente necesaria para coordinar el auxilio vial en carretera, administrar membresías comerciales y operar el Sitio:</p>
           <ul class="list-disc pl-6 space-y-1">
-            <li><strong>Información que usted nos proporciona.</strong> Al usar el formulario de contacto o llamarnos, puede facilitarnos su nombre, teléfono, correo electrónico, ubicación actual, servicio solicitado, datos del camión/vehículo y una descripción del problema.</li>
-            <li><strong>Comunicaciones.</strong> Registros de las llamadas, mensajes de texto o correos que intercambiamos con usted para coordinar la asistencia.</li>
-            <li><strong>Información recopilada automáticamente.</strong> Datos técnicos básicos como el tipo de dispositivo/navegador y la página de origen, solo en la medida en que alguna herramienta de análisis esté habilitada. Actualmente las herramientas de análisis están deshabilitadas en este Sitio (ver Sección 6).</li>
+            <li><strong>Información proporcionada directamente:</strong> Al completar el formulario de contacto, llamar por teléfono o contratar un plan de membresía, recopilamos su nombre, razón social o de flota, número telefónico, correo electrónico, ubicación geográfica en ruta (puntos kilométricos, autopistas o coordenadas en DFW), especificaciones del camión/remolque (tipo de eje, motor, unidad de frío) y descripción de la avería.</li>
+            <li><strong>Datos de membresías y facturación:</strong> Para miembros de los planes GY Básica, GY Plus y GY Premium, recopilamos el historial de servicios preventivos utilizados, fechas de renovación y registros de cobro periódico. No almacenamos números completos de tarjetas de crédito (ver Sección 8).</li>
+            <li><strong>Comunicaciones y despacho:</strong> Grabaciones o notas de despacho de llamadas entrantes y mensajes SMS necesarios para el envío de unidades móviles de auxilio.</li>
+            <li><strong>Datos técnicos y de interacción:</strong> Mediante herramientas analíticas autorizadas recopilamos datos sobre el uso del Sitio, tipo de dispositivo, resolución de pantalla, páginas visitadas y eventos de interacción con enlaces telefónicos (ver Sección 6).</li>
           </ul>
-          <p class="mt-3 text-sm text-muted">No recopilamos información personal sensible (como números de Seguro Social, cuentas financieras, datos de salud o biométricos) a través del Sitio.</p>
         </section>
 
         <section>
-          <h2 class="text-primary">3. Cómo Usamos su Información</h2>
-          <p>Usamos su información para:</p>
+          <h2 class="text-primary">3. Finalidad del Tratamiento de los Datos</h2>
+          <p>Utilizamos su información exclusivamente para fines comerciales legítimos y operativos:</p>
           <ul class="list-disc pl-6 space-y-1">
-            <li>Responder y coordinar su solicitud de asistencia en carretera.</li>
-            <li>Contactarle por teléfono, mensaje de texto o correo electrónico sobre el servicio solicitado.</li>
-            <li>Mantener registros de las solicitudes de servicio para fines propios de nuestro negocio.</li>
-            <li>Mejorar nuestros servicios y nuestro sitio web, cumplir obligaciones legales, prevenir fraudes y hacer valer nuestros derechos.</li>
-          </ul>
-          <p class="mt-3">No <strong>vendemos</strong> su información personal y no la compartimos con terceros para su marketing.</p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">4. Consentimiento de Llamadas y Mensajes de Texto (TCPA)</h2>
-          <p>
-            Si usted proporciona un número de teléfono, acepta ser contactado en ese
-            número mediante llamada telefónica y/o mensaje de texto (SMS) con el fin
-            de coordinar el servicio que solicita. Pueden aplicarse tarifas de mensaje
-            y datos. El consentimiento no es una condición de compra. Puede retirar su
-            consentimiento en cualquier momento respondiendo "STOP" a un mensaje o
-            contactándonos según la Sección 13. No usamos su número para marketing
-            automatizado sin un consentimiento aparte.
-          </p>
-          <p>
-            Cuando envía una solicitud desde nuestro formulario de contacto le pedimos
-            este consentimiento por separado de la aceptación de la Política de
-            Privacidad, y
-            registramos la fecha y la versión de la política que aceptó, de modo que
-            exista constancia de lo que usted aprobó.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">5. Cómo Compartimos la Información</h2>
-          <p>
-            Compartimos información solo con proveedores de confianza que nos ayudan a
-            operar el Sitio y responder a las solicitudes (por ejemplo, el servicio de
-            envío de formularios descrito en la Sección 8, y proveedores de hosting y
-            correo). Estos proveedores solo pueden procesar su información para
-            prestarnos servicios y deben mantenerla confidencial. También podemos
-            divulgar información si la ley lo exige, para responder a un proceso legal
-            válido o para proteger nuestros derechos, seguridad o propiedad.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">6. Cookies y Análisis</h2>
-          <p>
-            Este Sitio no utiliza cookies publicitarias ni de seguimiento por defecto.
-            Si más adelante se habilitan herramientas de análisis (como Google
-            Analytics o Google Tag Manager), estas pueden establecer cookies para
-            ayudarnos a entender el uso del sitio. El análisis solo está activo cuando
-            se configura un ID de seguimiento válido, y se usa la anonimización de IP
-            cuando es compatible. Si se habilita el análisis, actualizaremos el aviso
-            de cookies de este Sitio. La mayoría de los navegadores permiten rechazar
-            cookies en su configuración.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">7. Retención de Datos</h2>
-          <p>
-            Conservamos los envíos del formulario de contacto y las comunicaciones
-            relacionadas solo el tiempo necesario para prestar el servicio, resolver
-            disputas, cumplir requisitos legales, fiscales y contables, y operar
-            nuestro negocio. Usted puede solicitarnos eliminar su información
-            (ver Sección 9).
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">8. Servicios y Enlaces de Terceros</h2>
-          <p>
-            Nuestro formulario de contacto es procesado por Web3Forms. Consulte la
-            <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Política de Privacidad de Web3Forms</a>
-            para conocer cómo maneja los datos del formulario. El Sitio también puede
-            enlazar a Google Maps, Google Business Profile, Facebook, Instagram y
-            TikTok. Estos servicios tienen sus propias políticas de privacidad, no
-            somos responsables de sus prácticas y esta política se aplica solo a la
-            información que nosotros recopilamos.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">9. Sus Derechos de Privacidad (California y Otros Estados)</h2>
-          <p>
-            Si usted es residente de California, Colorado, Connecticut, Texas,
-            Virginia u otro estado de EE. UU. con una ley integral de privacidad del
-            consumidor, puede tener los siguientes derechos sobre la información
-            personal que conservamos acerca de usted. No "vendemos" ni "compartimos"
-            información personal según esos términos definidos por la CCPA/CPRA de
-            California u otras leyes estatales.
-          </p>
-          <ul class="list-disc pl-6 space-y-1">
-            <li><strong>Derecho a saber</strong> las categorías, fuentes, fines y destinatarios de la información personal que recopilamos.</li>
-            <li><strong>Derecho de acceso</strong> a una copia de la información personal que conservamos sobre usted.</li>
-            <li><strong>Derecho de eliminación</strong> de la información personal recopilada de usted (salvo excepciones legales).</li>
-            <li><strong>Derecho de corrección</strong> de información personal inexacta.</li>
-            <li><strong>Derecho a oponerse</strong> a la venta o el intercambio de información personal (no vendemos ni compartimos) y a la creación de perfiles automatizados que afecten decisiones sobre usted.</li>
-            <li><strong>Derecho a no ser discriminado</strong> por ejercer estos derechos.</li>
+            <li>Despachar mecánicos y grúas de auxilio vial de forma prioritaria en el área de Dallas-Fort Worth.</li>
+            <li>Verificar la vigencia y aplicar los descuentos de mano de obra y materiales correspondientes a su Membresía VIP.</li>
+            <li>Contactarle vía telefónica o SMS para coordinar la llegada del técnico o resolver dudas de facturación.</li>
+            <li>Procesar cobros recurrentes acordados bajo contratos de servicio de 12 meses.</li>
+            <li>Cumplir con regulaciones ambientales (registro de manejo de gases refrigerantes EPA Sección 608) y leyes fiscales de Texas.</li>
           </ul>
           <p class="mt-3">
-            Para ejercer un derecho, use los datos de contacto de la Sección 13 o
-            escríbanos con el asunto "Solicitud de Privacidad". Podemos necesitar
-            verificar su identidad antes de atender una solicitud. Puede usar un
-            agente autorizado; podemos pedir prueba de esa autorización. Responderemos
-            dentro del plazo que exija la ley aplicable (generalmente 45 días,
-            prorrogables una vez por 45 días más).
+            <strong>No vendemos</strong>, no alquilamos ni compartimos su información personal con agencias de publicidad externas o corredores de datos (data brokers).
           </p>
-          <div class="rounded-lg bg-light border border-border p-4 text-sm">
-            <strong>Categorías de información personal recopilada en los últimos 12 meses:</strong>
-            identificadores (nombre, teléfono, correo), geolocalización (ubicación actual
-            que usted facilite), información comercial (servicio solicitado, datos del
-            vehículo) y actividad de internet/uso (solo si el análisis está habilitado).
-            No recopilamos información personal sensible. Esta información se obtiene
-            directamente de usted y se usa para las finalidades de las Secciones 3 y 4.
+        </section>
+
+        <section>
+          <h2 class="text-primary">4. Comunicaciones Telefónicas y Consentimiento TCPA</h2>
+          <p>
+            Al pulsar nuestros enlaces directos de llamada (<code class="text-xs bg-slate-100 p-1 rounded">tel:</code>) o proporcionar su número telefónico en solicitudes web, usted consiente expresamente en ser contactado mediante llamada o mensaje de texto (SMS) operativo por parte de nuestros despachadores y técnicos para la atención de su vehículo o la formalización de su membresía, en cumplimiento con la <em>Telephone Consumer Protection Act</em> (TCPA).
+          </p>
+          <p>
+            Las tarifas estándar de llamadas y datos de su proveedor celular pueden aplicar. En ningún caso utilizamos llamadas automáticas pregrabadas (robocalls) con fines de mercadeo masivo sin su consentimiento previo por escrito. Puede solicitar el cese de mensajes informativos respondiendo "STOP" en cualquier momento.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">5. Membresías VIP y Contratos de Servicio Recurrentes</h2>
+          <p>
+            Los planes GY Básica ($99/mes), GY Plus ($169/mes) y GY Premium ($199/mes) están regidos por un contrato de prestación de servicios anual de doce (12) meses. Los datos recabados durante la suscripción se utilizan para validar los límites de mano de obra anual (cambios de aceite, frenos, neumáticos y mantenimiento reefer) y procesar las cuotas mensuales pactadas.
+          </p>
+          <p>
+            La información técnica del vehículo provista por el miembro se conserva para auditar la aplicación de descuentos contractuales y certificar el descargo de responsabilidad sobre piezas suministradas por el cliente.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">6. Cookies y Google Analytics 4 (GA4)</h2>
+          <p>
+            Este Sitio web utiliza <strong>Google Analytics 4 (GA4)</strong>, un servicio de analítica provisto por Google LLC, para medir el rendimiento de la plataforma y mejorar la experiencia del usuario. GA4 utiliza cookies e identificadores de dispositivos para registrar interacciones no identificables directamente, incluyendo vistas de páginas y eventos de conversión tales como clics hacia enlaces de llamada telefónica (<code>click_to_call</code>) y solicitudes de cotización (<code>generate_lead</code>).
+          </p>
+          <p>
+            Las direcciones IP son procesadas de forma automatizada por Google para derivar datos geográficos generales (a nivel metropolitano) y son descartadas inmediatamente sin ser registradas en servidores. Los datos se transmiten mediante protocolos de transporte seguros (<code class="text-xs bg-slate-100 p-1 rounded">beacon</code>).
+          </p>
+          <p>
+            Usted puede inhabilitar el rastreo analítico de Google en cualquier momento instalando en su navegador el 
+            <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-semibold">Complemento de inhabilitación para el navegador de Google Analytics</a>, 
+            o configurando las preferencias de privacidad de su navegador para rechazar cookies de terceros.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">7. Destinatarios y Proveedores de Servicios</h2>
+          <p>
+            Compartimos información únicamente con proveedores tecnológicos que hacen posible la prestación de nuestros servicios, los cuales están contractualmente obligados a proteger sus datos bajo estrictas normas de confidencialidad:
+          </p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li><strong>Procesamiento de Formularios:</strong> Web3Forms, utilizado para la transmisión cifrada de mensajes desde la web a nuestro correo operativo (<a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">Política de Web3Forms</a>).</li>
+            <li><strong>Infraestructura Web y Hospedaje:</strong> Proveedores de alojamiento en la nube e infraestructura estática (GitHub Pages / Netlify).</li>
+            <li><strong>Analítica Web:</strong> Google LLC (Google Analytics 4).</li>
+          </ul>
+          <p class="mt-3">
+            Podremos divulgar información si así lo requiere una orden judicial válida, requerimiento de autoridades policiales o del Departamento de Transporte (DOT), o cuando sea indispensable para salvaguardar la seguridad de nuestros técnicos en carretera.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">8. Seguridad en el Procesamiento de Pagos (PCI-DSS)</h2>
+          <p>
+            El cobro de los planes de membresía mensual se realiza exclusivamente a través de plataformas de pasarelas de pago externas certificadas bajo el estándar de seguridad <strong>PCI-DSS Nivel 1</strong>. {business.name} <strong>nunca recopila, procesa ni almacena números completos de tarjetas de crédito, códigos CVV ni datos bancarios sensibles</strong> en los servidores de este Sitio web.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">9. Retención y Conservación de Datos</h2>
+          <p>
+            Conservamos la información de contacto y los registros de órdenes de servicio en carretera durante el tiempo necesario para completar la asistencia, gestionar reclamaciones de garantía técnica, dar soporte contable-fiscal bajo las leyes de Texas (un mínimo habitual de 4 a 7 años para transacciones comerciales) y auditar el cumplimiento de los contratos de membresía de 12 meses.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">10. Sus Derechos de Privacidad (Texas TDPSA y Leyes Estatales)</h2>
+          <p>
+            De conformidad con la <strong>Ley de Privacidad y Seguridad de Datos de Texas (Texas Data Privacy and Security Act — TDPSA)</strong> y normativas aplicables de otros estados (como la CCPA/CPRA de California), los usuarios y transportistas gozan de los siguientes derechos sobre sus datos personales:
+          </p>
+          <ul class="list-disc pl-6 space-y-1">
+            <li><strong>Derecho de confirmación y acceso:</strong> Confirmar si estamos tratando sus datos personales y acceder a una copia de los mismos.</li>
+            <li><strong>Derecho de rectificación:</strong> Solicitar la corrección de errores en sus datos de contacto o registro de unidades.</li>
+            <li><strong>Derecho de supresión:</strong> Solicitar la eliminación de sus datos personales recopilados, con sujeción a las excepciones legales de conservación fiscal y contractual.</li>
+            <li><strong>Derecho a no discriminación:</strong> No recibir tratos diferenciados, denegación de auxilio en carretera ni variaciones tarifarias por el ejercicio legítimo de sus derechos.</li>
+            <li><strong>Derecho de exclusión (Opt-Out):</strong> Excluirse de la venta de datos personales o del perfilado automatizado. Hacemos constar expresamente que <em>no vendemos datos personales ni realizamos perfilados comerciales automatizados</em>.</li>
+          </ul>
+          <p class="mt-3">
+            Para ejercer estos derechos, remita su solicitud a través de los canales establecidos en la Sección 14 con la referencia "Solicitud de Derechos de Privacidad". Atenderemos su solicitud en los plazos legalmente estipulados (máximo 45 días naturales).
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">11. Privacidad de Menores</h2>
+          <p>
+            Nuestros servicios están dirigidos exclusivamente a operadores de camiones comerciales, conductores y empresas de logística mayores de 18 años. No recopilamos a sabiendas datos de menores de 16 años.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">12. Medidas de Seguridad</h2>
+          <p>
+            Implementamos protocolos de seguridad estándar de la industria, incluyendo cifrado HTTPS (Transport Layer Security - TLS) en todas las comunicaciones del Sitio, cortafuegos de red y acceso restringido con autenticación robusta para el personal de despacho y asistencia técnica.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">13. Modificaciones a esta Política</h2>
+          <p>
+            Nos reservamos el derecho de modificar esta Política de Privacidad en cualquier momento para reflejar cambios normativos, operativos o tecnológicos. Toda modificación entrará en vigor de inmediato con la actualización de la fecha de "Última Actualización" al inicio de esta página.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-primary">14. Contacto y Notificaciones Legales</h2>
+          <p>
+            Para consultas relacionadas con esta Política de Privacidad, el tratamiento de sus datos o el ejercicio de derechos de privacidad en Texas, puede contactar a nuestro responsable legal en:
+          </p>
+          <div class="rounded-xl bg-slate-50 border border-slate-200 p-5 text-sm not-italic text-slate-800 mt-3">
+            <strong class="text-base text-primary block mb-1">{business.name}</strong>
+            <p class="mb-1">{mailingAddress}</p>
+            <p class="mb-1">
+              Correo Electrónico: <a href={`mailto:${business.email}`} class="text-primary font-semibold hover:underline">{business.email}</a>
+            </p>
+            <p>
+              Teléfono de Despacho: <a href={`tel:${business.phone}`} class="text-primary font-semibold hover:underline">{business.phoneDisplay}</a>
+            </p>
           </div>
-        </section>
-
-        <section>
-          <h2 class="text-primary">10. Privacidad de Menores</h2>
-          <p>
-            El Sitio no está dirigido a menores de 16 años y no recopilamos
-            conscientemente información personal de menores. Si cree que un menor nos
-            ha proporcionado información, contáctenos para eliminarla.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">11. Seguridad de los Datos</h2>
-          <p>
-            Adoptamos medidas administrativas, técnicas y organizativas razonables
-            para proteger su información. Sin embargo, ningún método de transmisión
-            por Internet o de almacenamiento electrónico es completamente seguro, por
-            lo que no podemos garantizar una seguridad absoluta.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">12. Cambios y Ley Aplicable</h2>
-          <p>
-            Podemos actualizar esta Política de Privacidad periódicamente. Los cambios
-            importantes se publicarán en esta página con una fecha de "Última
-            Actualización" renovada. Esta política se rige por las leyes del Estado de
-            Texas, EE. UU., sin respecto a las normas de conflicto de leyes.
-          </p>
-        </section>
-
-        <section>
-          <h2 class="text-primary">13. Contacto</h2>
-          <p>
-            Si tiene preguntas sobre esta Política de Privacidad o desea ejercer un
-            derecho de privacidad, contáctenos en:<br />
-            <strong>{business.name}</strong><br />
-            {mailingAddress}<br />
-            <a href={`mailto:${business.email}`} class="text-primary hover:underline">{business.email}</a><br />
-            <a href={`tel:${business.phone}`} class="text-primary hover:underline">{business.phoneDisplay}</a>
-          </p>
         </section>
       </div>
     </div>
