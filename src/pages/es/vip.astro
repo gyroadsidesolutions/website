@@ -9,235 +9,268 @@ const alternateUrl = `${site.url}/en/vip/`;
 ---
 
 <BaseLayout
-  title={`Membresías VIP de Asistencia en Carretera | ${business.name}`}
-  description="Planes de mantenimiento preventivo y auxilio vial 24/7 en Dallas-Fort Worth para camiones comerciales de 3 ejes y unidades reefer con tarifas blindadas."
+  title={`Planes de Membresía | ${business.name}`}
+  description="Planes de membresía para asistencia vial y mantenimiento de camiones comerciales y unidades reefer en Dallas-Fort Worth."
   lang={lang}
   canonicalUrl={canonicalUrl}
   alternateUrl={alternateUrl}
 >
   <main class="min-h-screen bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-6xl mx-auto text-center mb-14">
-      <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest bg-amber-500/10 text-amber-400 border border-amber-500/30 uppercase mb-4">
-        Contratos Anuales de Mantenimiento y Auxilio Vial
+    <div class="max-w-5xl mx-auto text-center mb-12">
+      <span class="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest bg-blue-600 text-white uppercase mb-4">
+        {business.name}
       </span>
       <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
-        Planes de Membresía VIP Comercial
+        PLANES DE MEMBRESÍA
       </h1>
-      <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto">
-        Protección operativa contra tiempos muertos en Dallas-Fort Worth. Cobertura de mano de obra en los 3 ejes del camión, mantenimiento preventivo de unidad reefer y despacho 24/7 sin cargos abusivos.
-      </p>
     </div>
 
-    <!-- Rejilla de los 3 Planes -->
+    <!-- Bloques promocionales -->
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <h3 class="text-lg font-bold text-blue-400 mb-2">Prioridad en asistencia de emergencia</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Los miembros reciben prioridad en la coordinación y atención de sus solicitudes de auxilio vial, según la disponibilidad del servicio.
+        </p>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <h3 class="text-lg font-bold text-blue-400 mb-2">Servicios de asistencia vial</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Acceso a beneficios y condiciones especiales en servicios seleccionados de asistencia vial móvil, de acuerdo con el plan contratado.
+        </p>
+      </div>
+
+      <div class="bg-slate-800 border border-slate-700 rounded-xl p-6">
+        <h3 class="text-lg font-bold text-blue-400 mb-2">Descuentos exclusivos en asistencia móvil</h3>
+        <p class="text-slate-300 text-sm leading-relaxed">
+          Disfruta de descuentos especiales en la mano de obra de los servicios elegibles de asistencia vial móvil, conforme a las condiciones de tu membresía.
+        </p>
+      </div>
+    </div>
+
+    <!-- Planes de Membresía -->
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch mb-16">
       
-      <!-- Plan 1: GY Básica -->
-      <div class="bg-slate-800/90 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+      <!-- 1. GY Básica -->
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
         <div>
-          <span class="text-xs font-bold tracking-wider text-slate-400 uppercase">Operador Individual</span>
-          <h2 class="text-2xl font-bold text-white mt-1 mb-2">GY Básica</h2>
-          <p class="text-slate-400 text-xs mb-6">Mantenimiento preventivo esencial para 1 camión de 3 ejes.</p>
-          
-          <div class="flex items-baseline mb-6">
-            <span class="text-4xl sm:text-5xl font-black text-white">$99</span>
-            <span class="text-slate-400 text-sm ml-2 font-medium">/ mes</span>
+          <h2 class="text-2xl font-bold text-white mb-2">1. GY Básica</h2>
+          <div class="flex items-baseline mb-1">
+            <span class="text-4xl font-extrabold text-white">Precio: $99</span>
+            <span class="text-slate-400 text-sm ml-2">/ mes</span>
           </div>
-          <p class="text-[11px] text-amber-400/90 font-medium -mt-4 mb-6">*Contrato anual obligatorio de 12 meses</p>
+          <p class="text-xs text-amber-400 mb-6 font-semibold">*Contrato de servicio anual (12 meses)</p>
 
-          <div class="border-t border-slate-700/80 pt-4 mb-6">
-            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Mano de Obra Incluida al Año:</p>
-            <ul class="space-y-3 text-slate-300 text-xs">
+          <div class="mb-6">
+            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">Servicios incluidos por año:</h4>
+            <ul class="space-y-2.5 text-slate-300 text-sm">
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>2 cambios de aceite y filtros de motor</strong> (mano de obra; intervalo mínimo de 3 meses).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Dos servicios de cambio de aceite y filtros del motor al año.</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>Mano de obra de cambio de frenos</strong> en los 3 ejes del camión (1 servicio anual al suministrar las piezas con GY).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un cambio de frenos por cada eje del vehículo al año (en los 3 ejes).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>Mano de obra de reemplazo de neumáticos</strong> en los 3 ejes del camión (1 servicio anual con neumáticos provistos por GY).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un reemplazo de neumáticos por cada eje del vehículo al año (en los 3 ejes).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>1 limpieza técnica de la unidad reefer</strong> (soplado de condensador y desengrase del compartimento del motor; no caja).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Una limpieza de la unidad refrigerada (reefer) al año (unidad mecánica, no incluye la caja).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>10% desc. en mano de obra</strong> de mant. general de unidad reefer (activo tras 5 meses).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un mantenimiento general del reefer al año, con 10% de descuento sobre el costo total.</span>
               </li>
             </ul>
           </div>
 
-          <div class="border-t border-slate-700/80 pt-4 mb-6">
-            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Beneficios Comerciales:</p>
-            <ul class="space-y-2 text-slate-400 text-xs">
-              <li>• 10% descuento sobre el costo total de piezas y fluidos.</li>
-              <li>• 10% descuento en cargo de millaje de traslado.</li>
-              <li>• 5% descuento en mano de obra en asistencias no incluidas.</li>
+          <div class="border-t border-slate-700 pt-4 mb-6">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Descuentos y beneficios:</h4>
+            <ul class="space-y-2 text-slate-300 text-xs">
+              <li>• 10% de descuento sobre el costo total de los servicios incluidos en la membresía.</li>
+              <li>• 10% de descuento en las millas recorridas para desplazarse hasta la ubicación del miembro.</li>
+              <li>• 5% de descuento en la mano de obra de los servicios de asistencia vial que no estén incluidos en la membresía.</li>
             </ul>
           </div>
         </div>
 
         <a
           href={`tel:${business.phone}`}
-          class="w-full text-center bg-slate-700 hover:bg-slate-600 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
+          class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
         >
-          Contratar GY Básica al {business.phoneDisplay}
+          Llamar para Activar GY Básica
         </a>
       </div>
 
-      <!-- Plan 2: GY Plus -->
+      <!-- 2. GY Plus -->
       <div class="bg-slate-800 border-2 border-blue-500 rounded-2xl p-7 flex flex-col justify-between shadow-2xl relative">
-        <div class="absolute -top-3.5 right-6 bg-blue-600 text-white text-[11px] font-bold py-1 px-3 rounded-full uppercase tracking-wider shadow">
-          Más Popular
-        </div>
-
         <div>
-          <span class="text-xs font-bold tracking-wider text-blue-400 uppercase">Cargas Refrigeradas</span>
-          <h2 class="text-2xl font-bold text-white mt-1 mb-2">GY Plus</h2>
-          <p class="text-slate-400 text-xs mb-6">Cobertura continua para tractocamión de 3 ejes y unidad de frío.</p>
-          
-          <div class="flex items-baseline mb-6">
-            <span class="text-4xl sm:text-5xl font-black text-white">$169</span>
-            <span class="text-slate-400 text-sm ml-2 font-medium">/ mes</span>
+          <h2 class="text-2xl font-bold text-white mb-2">2. GY Plus</h2>
+          <div class="flex items-baseline mb-1">
+            <span class="text-4xl font-extrabold text-white">Precio: $169</span>
+            <span class="text-slate-400 text-sm ml-2">/ mes</span>
           </div>
-          <p class="text-[11px] text-amber-400/90 font-medium -mt-4 mb-6">*Contrato anual obligatorio de 12 meses</p>
+          <p class="text-xs text-amber-400 mb-6 font-semibold">*Contrato de servicio anual (12 meses)</p>
 
-          <div class="border-t border-slate-700/80 pt-4 mb-6">
-            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Mano de Obra Incluida al Año:</p>
-            <ul class="space-y-3 text-slate-300 text-xs">
+          <div class="mb-6">
+            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">Servicios incluidos por año:</h4>
+            <ul class="space-y-2.5 text-slate-300 text-sm">
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>2 cambios de aceite de motor</strong> (1° con mano de obra incluida; 2° con 20% desc. en labor; min. 3 meses).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Dos servicios de cambio de aceite y filtros del motor al año; el segundo con 20% de descuento sobre el costo total.</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>Mano de obra de cambio de frenos</strong> en los 3 ejes del camión (1 servicio anual al suministrar las piezas con GY).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un cambio de frenos por cada eje del vehículo al año (en los 3 ejes).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>Mano de obra de reemplazo de neumáticos</strong> en los 3 ejes del camión (1 servicio anual con neumáticos provistos por GY).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un reemplazo de neumáticos por cada eje del vehículo al año (en los 3 ejes).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>1 limpieza técnica de unidad reefer</strong> (compartimento de motor y condensador).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Una limpieza de la unidad refrigerada (reefer) al año (unidad mecánica, no incluye la caja).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>1 inspección operativa y presiones de reefer</strong> sin costo de labor.</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Una inspección de la unidad refrigerada (reefer) al año, sin costo adicional.</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>20% desc. en mano de obra</strong> de mant. general de reefer (activo tras 5 meses).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un mantenimiento general del reefer al año, con 20% de descuento sobre el costo total.</span>
               </li>
             </ul>
           </div>
 
-          <div class="border-t border-slate-700/80 pt-4 mb-6">
-            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Beneficios Comerciales:</p>
-            <ul class="space-y-2 text-slate-400 text-xs">
-              <li>• 15% descuento sobre el costo total de piezas y fluidos.</li>
-              <li>• 20% descuento en cargo de millaje de traslado.</li>
-              <li>• 10% descuento en mano de obra en asistencias no incluidas.</li>
+          <div class="border-t border-slate-700 pt-4 mb-6">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Descuentos y beneficios:</h4>
+            <ul class="space-y-2 text-slate-300 text-xs">
+              <li>• 15% de descuento sobre el costo total de los servicios incluidos en la membresía.</li>
+              <li>• 20% de descuento en las millas recorridas para desplazarse hasta la ubicación del miembro.</li>
+              <li>• 10% de descuento en la mano de obra de los servicios de asistencia vial que no estén incluidos en la membresía.</li>
             </ul>
           </div>
         </div>
 
         <a
           href={`tel:${business.phone}`}
-          class="w-full text-center bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
+          class="w-full text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
         >
-          Contratar GY Plus al {business.phoneDisplay}
+          Llamar para Activar GY Plus
         </a>
       </div>
 
-      <!-- Plan 3: GY Premium -->
-      <div class="bg-slate-800/90 border border-amber-500/40 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
+      <!-- 3. GY Premium -->
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-7 flex flex-col justify-between shadow-xl">
         <div>
-          <span class="text-xs font-bold tracking-wider text-amber-400 uppercase">Flotas y Carga Crítica</span>
-          <h2 class="text-2xl font-bold text-white mt-1 mb-2">GY Premium</h2>
-          <p class="text-slate-400 text-xs mb-6">Máxima prioridad y respaldo mecánico en DFW.</p>
-          
-          <div class="flex items-baseline mb-6">
-            <span class="text-4xl sm:text-5xl font-black text-white">$199</span>
-            <span class="text-slate-400 text-sm ml-2 font-medium">/ mes</span>
+          <h2 class="text-2xl font-bold text-white mb-2">3. GY Premium</h2>
+          <div class="flex items-baseline mb-1">
+            <span class="text-4xl font-extrabold text-white">Precio: $199</span>
+            <span class="text-slate-400 text-sm ml-2">/ mes</span>
           </div>
-          <p class="text-[11px] text-amber-400/90 font-medium -mt-4 mb-6">*Contrato anual obligatorio de 12 meses</p>
+          <p class="text-xs text-amber-400 mb-6 font-semibold">*Contrato de servicio anual (12 meses)</p>
 
-          <div class="border-t border-slate-700/80 pt-4 mb-6">
-            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Mano de Obra Incluida al Año:</p>
-            <ul class="space-y-3 text-slate-300 text-xs">
+          <div class="mb-6">
+            <h4 class="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">Servicios incluidos por año:</h4>
+            <ul class="space-y-2.5 text-slate-300 text-sm">
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>2 cambios de aceite de motor</strong> (1° con mano de obra incluida; 2° con 30% desc. en labor; min. 3 meses).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Dos servicios de cambio de aceite y filtros del motor al año; el segundo con 30% de descuento sobre el costo total.</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>Mano de obra de cambio de frenos</strong> en los 3 ejes del camión (1 servicio anual al suministrar las piezas con GY).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un cambio de frenos por cada eje del vehículo al año (en los 3 ejes).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>Mano de obra de reemplazo de neumáticos</strong> en los 3 ejes del camión (1 servicio anual con neumáticos provistos por GY).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un reemplazo de neumáticos por cada eje del vehículo al año (en los 3 ejes).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>2 limpiezas técnicas de unidad reefer</strong> (compartimento de motor y condensador).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Dos limpiezas de la unidad refrigerada (reefer) al año (unidad mecánica, no incluye la caja).</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>2 inspecciones operativas de reefer</strong> sin costo de labor.</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Dos inspecciones de la unidad refrigerada (reefer) al año, sin costo adicional.</span>
               </li>
               <li class="flex items-start">
-                <span class="text-emerald-400 font-bold mr-2">✓</span>
-                <span><strong>25% desc. en mano de obra</strong> de mant. general de reefer (activo tras 5 meses).</span>
+                <span class="text-blue-400 font-bold mr-2">•</span>
+                <span>Un mantenimiento general del reefer al año, con 25% de descuento sobre el costo total.</span>
               </li>
             </ul>
           </div>
 
-          <div class="border-t border-slate-700/80 pt-4 mb-6">
-            <p class="text-xs font-bold text-slate-200 uppercase tracking-wider mb-3">Beneficios Comerciales:</p>
-            <ul class="space-y-2 text-slate-400 text-xs">
-              <li>• 20% descuento sobre el costo total de piezas y fluidos.</li>
-              <li>• 25% descuento en cargo de millaje de traslado.</li>
-              <li>• 15% descuento en mano de obra en asistencias no incluidas.</li>
+          <div class="border-t border-slate-700 pt-4 mb-6">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Descuentos y beneficios:</h4>
+            <ul class="space-y-2 text-slate-300 text-xs">
+              <li>• 20% de descuento sobre el costo total de los servicios incluidos en la membresía.</li>
+              <li>• 25% de descuento en las millas recorridas para desplazarse hasta la ubicación del miembro.</li>
+              <li>• 15% de descuento en la mano de obra de los servicios de asistencia vial que no estén incluidos en la membresía.</li>
             </ul>
           </div>
         </div>
 
         <a
           href={`tel:${business.phone}`}
-          class="w-full text-center bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
+          class="w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 rounded-xl transition duration-200 shadow-md block text-sm"
         >
-          Contratar GY Premium al {business.phoneDisplay}
+          Llamar para Activar GY Premium
         </a>
       </div>
 
     </div>
 
-    <!-- Términos Contractuales y Blindaje Legal -->
-    <div class="max-w-5xl mx-auto bg-slate-950/80 border border-slate-800 rounded-2xl p-6 sm:p-8 text-slate-400 text-xs leading-relaxed">
-      <h3 class="text-white text-sm font-bold uppercase tracking-wider mb-4 border-b border-slate-800 pb-2">
-        Condiciones Contractuales de las Membresías
-      </h3>
-      <div class="space-y-3">
-        <p>
-          <strong class="text-slate-200">1. Suministro de Repuestos y Mano de Obra:</strong> Las membresías cubren los honorarios de mano de obra descritos en cada plan. La inclusión de mano de obra en frenos y neumáticos en los tres (3) ejes del camión comercial está condicionada a que las piezas (zapatas, tambores, neumáticos y herrajes) sean suministradas por GY Roadside Solutions LLC, aplicando el descuento del plan sobre el costo de las partes. Si el cliente decide aportar sus propios repuestos, el descuento del plan se aplicará exclusivamente sobre la tarifa regular de mano de obra.
+    <!-- 4. Condiciones generales y 5. Alcance Reefer -->
+    <div class="max-w-4xl mx-auto space-y-8 text-slate-300 text-sm leading-relaxed">
+      
+      <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 sm:p-8">
+        <h3 class="text-lg font-bold text-white mb-4">
+          4. Condiciones generales aplicables a las tres membresías
+        </h3>
+        <ul class="space-y-3 list-disc pl-5">
+          <li>
+            Los precios indicados corresponden a una cuota mensual sujeta a un contrato de servicio anual con vigencia obligatoria de doce (12) meses consecutivos.
+          </li>
+          <li>
+            GY Roadside Solutions LLC suministrará las piezas, los repuestos, el aceite, los filtros, los neumáticos, los componentes de frenos y los demás materiales necesarios para realizar los servicios incluidos en la membresía, según corresponda. El costo de estos elementos estará sujeto a los descuentos establecidos para cada servicio.
+          </li>
+          <li>
+            La inclusión del servicio de cambio de frenos y reemplazo de neumáticos en los tres (3) ejes del vehículo está sujeta a que los componentes mecánicos y neumáticos sean suministrados por GY Roadside Solutions LLC. Si el miembro decide proporcionar sus propias piezas, repuestos o materiales, el servicio no será gratuito y el descuento correspondiente a la membresía se aplicará únicamente al costo de la mano de obra calculada a tarifa regular.
+          </li>
+          <li>
+            Los dos servicios anuales de cambio de aceite deberán realizarse con un intervalo mínimo de tres meses entre ellos.
+          </li>
+          <li>
+            El mantenimiento general de la unidad refrigerada (reefer) podrá realizarse únicamente después de transcurridos cinco meses desde la fecha de inicio de vigencia de la membresía del cliente.
+          </li>
+          <li>
+            GY Roadside Solutions LLC no otorga garantías sobre componentes o repuestos suministrados por el cliente o terceros, quedando exenta de responsabilidad por fallas o incidentes derivados de los mismos. Asimismo, la empresa no asume responsabilidad civil ni económica por pérdida, descomposición o daño de carga transportada, lucro cesante o demoras en carretera por condiciones de tráfico o fuerza mayor.
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-6 sm:p-8">
+        <h3 class="text-lg font-bold text-white mb-4">
+          5. Alcance del mantenimiento general de la unidad refrigerada (reefer)
+        </h3>
+        <p class="mb-4">
+          El mantenimiento general del reefer comprende exclusivamente los siguientes trabajos en la unidad mecánica de refrigeración (no incluye la caja ni el lavado interior/exterior del tráiler):
         </p>
-        <p>
-          <strong class="text-slate-200">2. Alcance Exclusivo de Unidad Reefer:</strong> Los servicios de inspección, limpieza técnica y mantenimiento preventivo de reefer aplican estrictamente a la unidad mecánica de refrigeración (motor diésel, correas, filtros, serpentines y condensador de marcas Carrier / Thermo King). En ningún caso comprende el lavado o desinfección interior o exterior de la caja o tráiler refrigerado (*trailer wash-out*).
-        </p>
-        <p>
-          <strong class="text-slate-200">3. Contrato Anual Obligatorio:</strong> Todas las membresías requieren permanencia obligatoria de doce (12) meses continuos. Los servicios anuales no son transferibles ni acumulables entre diferentes unidades sin previa autorización por escrito.
-        </p>
-        <p>
-          <strong class="text-slate-200">4. Cumplimiento Ambiental EPA:</strong> El mantenimiento general de la unidad de refrigeración incluye cambio de aceite/filtros, cambio de correas y revisión operativa. Conforme a la Sección 608 de la Ley de Aire Limpio (Clean Air Act de la EPA), la recarga de gas refrigerante requiere verificación previa y no se suministrará refrigerante a sistemas con fugas activas no resueltas.
-        </p>
-        <p>
-          <strong class="text-slate-200">5. Deslinde de Responsabilidad por Carga:</strong> GY Roadside Solutions LLC no asume responsabilidad civil ni económica por reclamos derivados de lucro cesante, descomposición o daño de mercancía perecedera, demoras en tiempos de entrega ni multas impuestas por el Departamento de Transporte (DOT).
+        <ul class="space-y-2 list-disc pl-5 mb-4">
+          <li>Cambio de aceite y filtros de la unidad del reefer.</li>
+          <li>Cambio de correas.</li>
+          <li>Completar el nivel de refrigerante cuando sea necesario (sujeto a verificación técnica previa conforme a las regulaciones de la Sección 608 de la EPA; no se aplicará gas a sistemas con fugas no reparadas).</li>
+          <li>Verificación del funcionamiento del compresor y del funcionamiento general de la unidad.</li>
+        </ul>
+        <p class="text-slate-400 text-xs leading-relaxed">
+          Este mantenimiento no incluye reparación de fugas de refrigerante, reparaciones mecánicas o eléctricas mayores, desarme de componentes, sustitución de otros componentes ni trabajos distintos de los expresamente enumerados. Si se detecta una fuga, avería o necesidad de un trabajo adicional, se informará al miembro y se cotizará por separado.
         </p>
       </div>
+
     </div>
   </main>
 </BaseLayout>
